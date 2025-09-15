@@ -1,0 +1,516 @@
+<style>
+
+/* 产品特色 */
+product-features {
+  display: block;
+  background-color: var(--bg-color);
+  padding-top: var(--mob-padding-top);
+  padding-bottom: var(--mob-padding-bottom);
+}
+@media (min-width: 768px) {
+  product-features {
+    padding-top: var(--pc-padding-top);
+    padding-bottom: var(--pc-padding-bottom);
+  }
+}
+product-features .swiper-slide {
+  position: relative;
+  height: auto;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+product-features .swiper-slide .media_wrapper {
+  --tw-bg-opacity: 1;
+  background-color: rgba(244, 244, 244, 1);
+  background-color: rgba(244, 244, 244, var(--tw-bg-opacity, 1));
+}
+product-features .swiper-slide .media_wrapper video {
+  height: auto;
+  max-height: 660px;
+  min-height: 560px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (min-width: 768px) {
+  product-features .swiper-slide .media_wrapper video.mobile-video {
+    display: none;
+  }
+}
+product-features .swiper-slide .media_wrapper video.pc-video {
+  display: none;
+}
+@media (min-width: 768px) {
+  product-features .swiper-slide .media_wrapper video.pc-video {
+    display: block;
+  }
+}
+product-features .swiper-slide .media_wrapper svg {
+  height: auto;
+  max-height: 560px;
+  width: 100%;
+}
+product-features .swiper-slide .content_wrapper {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+@media (min-width: 768px) {
+  product-features .swiper-slide .content_wrapper {
+    top: 15%;
+  }
+}
+product-features .swiper-slide .content_wrapper .min-title {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--min-title-color);
+}
+product-features .swiper-slide .content_wrapper .title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  color: var(--title-color);
+}
+product-features .swiper-slide .content_wrapper .desc {
+  margin-top: 0.25rem;
+  color: var(--desc-color);
+}
+product-features .swiper-slide .content_wrapper .link-btn {
+  margin-top: 2.5rem;
+}
+product-features .swiper-slide .content_wrapper .link-btn button {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border-style: none;
+  background-color: var(--btn-bg);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--btn-color);
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+product-features .swiper-slide .content_wrapper .link-btn button:hover {
+  background-color: var(--btn-bg-hover);
+  color: var(--btn-color-hover);
+}
+product-features .swiper-operate-wrapper {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+@media (min-width: 768px) {
+  product-features .swiper-operate-wrapper {
+    justify-content: flex-start;
+  }
+}
+product-features .swiper-operate-wrapper {
+    --swiper-navigation-size: 16px;
+    --swiper-navigation-color: #000;
+    --swiper-pagination-bullet-inactive-opacity: 0.4;
+    --swiper-pagination-bullet-inactive-color: #ffffff;
+    --swiper-pagination-color: #ffffff;
+  }
+product-features .swiper-operate-wrapper .swiper-button-next,
+    product-features .swiper-operate-wrapper .swiper-button-prev {
+  position: static;
+  margin-top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 32px;
+  height: 32px;
+      transform: none;
+}
+product-features .swiper-operate-wrapper .swiper-button-next::after, product-features .swiper-operate-wrapper .swiper-button-prev::after {
+  display: none;
+}
+product-features .swiper-operate-wrapper .swiper-pagination {
+  position: static;
+  margin-top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  align-items: center;
+      transform: none;
+}
+product-features .swiper-operate-wrapper .swiper-pagination .swiper-pagination-bullet {
+  height: 2px;
+  width: 2.5rem;
+  border-radius: 2px;
+}
+</style>
+
+<product-features
+  style="
+    --bg-color:{{ section.settings.bg_color  }};
+    --pc-padding-top: {{ section.settings.padding_top }}px;
+    --pc-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --mob-padding-top: {{ section.settings.padding_top_M }}px;
+    --mob-padding-bottom: {{ section.settings.padding_bottom_M }}px;
+  "
+>
+  <div class="{{ section.settings.containernew }}">
+    <div class="swiper product-features__swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div
+            class="swiper-slide"
+            style="
+              --min-title-color:{{ block.settings.mini_title_color }};
+              --title-color:{{ block.settings.title_color }};
+              --desc-color:{{ block.settings.desc_color }};
+              --btn-bg:{{ block.settings.btn_bg }};
+              --btn-color:{{ block.settings.btn_color }};
+              --btn-bg-hover: {{ block.settings.btn_bg_hover }};
+              --btn-color-hover:{{ block.settings.btn_color_hover }};
+            "
+          >
+            <div class="media_wrapper">
+              {% if block.settings.pc_video != blank %}
+                {{
+                  block.settings.pc_video
+                  | video_tag: image_size: '1440x', muted: true, class: 'slide-video pc-video'
+                }}
+              {% endif %}
+
+              {% if block.settings.mob_video != blank %}
+                {{
+                  block.settings.mob_video
+                  | video_tag: image_size: '750x', muted: true, class: 'slide-video mobile-video'
+                }}
+              {% endif %}
+
+              {% if block.settings.mob_video == blank and block.settings.pc_video == blank %}
+                {{ 'collection-1' | placeholder_svg_tag }}
+              {% endif %}
+            </div>
+            <div class="content_wrapper">
+              {% if block.settings.mini_title != blank %}
+                <div class="min-title">{{ block.settings.mini_title }}</div>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <div class="title">{{ block.settings.title }}</div>
+              {% endif %}
+              {% if block.settings.desc != blank %}
+                <div class="desc">{{ block.settings.desc }}</div>
+              {% endif %}
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}" class="link-btn">
+                  <button>{{ block.settings.link_text }}</button></a
+                >
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-operate-wrapper">
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M2 12H21" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            <path d="M12.1719 2L22.1719 12L12.1719 22" stroke="#ffffff" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</product-features>
+
+<script>
+  window.customElements.get('product-features') ||
+    window.customElements.define(
+      'product-features',
+      class extends HTMLElement {
+        constructor() {
+          super();
+        }
+        connectedCallback() {
+          if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', () => {
+              this.initSwiper();
+            });
+          } else {
+            this.initSwiper();
+          }
+        }
+
+        initSwiper() {
+          const bannerSwiper = this.querySelector('.product-features__swiper');
+          const pagination = this.querySelector('.swiper-pagination');
+          const nextEl = this.querySelector('.swiper-button-next');
+          const swiper = new Swiper(bannerSwiper, {
+            slidesPerView: 1,
+            loop: true,
+            autoplay: false,
+            spaceBetween: 12,
+            navigation: {
+              nextEl: nextEl,
+            },
+            pagination: {
+              el: pagination,
+              clickable: true,
+            },
+            on: {
+              slideChange: function () {
+                const prevSlide = this.slides[this.previousIndex];
+                const prevVideos = prevSlide.querySelectorAll('.slide-video');
+                prevVideos.forEach((video) => {
+                  video.pause();
+                  video.currentTime = 0;
+                });
+
+                const currentSlide = this.slides[this.activeIndex];
+                const allVideosInCurrentSlide = currentSlide.querySelectorAll('.slide-video');
+                let currentVideo = null;
+
+                allVideosInCurrentSlide.forEach((video) => {
+                  if (video.offsetWidth > 0 && video.offsetHeight > 0) {
+                    currentVideo = video;
+                  }
+                });
+
+                if (currentVideo) {
+                  currentVideo.play();
+                  currentVideo.onended = function () {
+                    swiper.slideNext();
+                  };
+                }
+              },
+              init: function () {
+                const firstSlide = this.slides[this.activeIndex];
+                const allVideosInFirstSlide = firstSlide.querySelectorAll('.slide-video');
+                let firstSlideVideo = null;
+                allVideosInFirstSlide.forEach((video) => {
+                  if (video.offsetWidth > 0 && video.offsetHeight > 0) {
+                    firstSlideVideo = video;
+                  }
+                });
+
+                if (firstSlideVideo) {
+                  firstSlideVideo.play();
+                  firstSlideVideo.onended = function () {
+                    swiper.slideNext();
+                  };
+                }
+              },
+            },
+          });
+        }
+      }
+    );
+</script>
+
+{% schema %}
+{
+  "name": "首页产品功能",
+  "disabled_on": {
+    "groups": ["footer", "header"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "containernew",
+      "label": "容器宽度选择",
+      "default": "width-full",
+      "options": [
+        {
+          "value": "width-full",
+          "label": "全宽"
+        },
+        {
+          "value": "page-width",
+          "label": "容器宽度"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "box_id",
+      "label": "盒子ID名"
+    },
+    {
+      "type": "text",
+      "id": "box_class",
+      "label": "盒子类名"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_top_M",
+      "label": "移动端上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_M",
+      "label": "移动端下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "色值配置区",
+      "info": "色值配置区"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#fff"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "内容",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "媒体配置"
+        },
+        {
+          "type": "video",
+          "id": "pc_video",
+          "label": "PC端视频"
+        },
+        {
+          "type": "video",
+          "id": "mob_video",
+          "label": "移动端端视频"
+        },
+        {
+          "type": "header",
+          "content": "内容配置"
+        },
+        {
+          "type": "text",
+          "id": "mini_title",
+          "label": "小标题"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "内容"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "链接"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "链接文本",
+          "default": "SHOP NOW"
+        },
+        {
+          "type": "header",
+          "content": "样式配置"
+        },
+        {
+          "type": "color",
+          "id": "mini_title_color",
+          "label": "小标题颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "标题颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "desc_color",
+          "label": "内容颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "btn_color",
+          "label": "按钮文本颜色",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg",
+          "label": "按钮背景颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "btn_color_hover",
+          "label": "按钮Hover文本颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_hover",
+          "label": "按钮Hover背景颜色",
+          "default": "#ff6e0d"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "首页产品功能",
+      "category": "新增功能版块"
+    }
+  ]
+}
+{% endschema %}
