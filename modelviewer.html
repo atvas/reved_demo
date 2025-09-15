@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .section-model {
+        padding: 120px 16px;
+    }
+
+    .section-model .container {
+        width: 100%;
+        max-width: 1320px;
+        margin: 0 auto;
+
+    }
+</style>
+
+<body>
+    <div class="section-model">
+        <div class="container">
+            <model-viewer-controls src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                alt="A 3D model of an astronaut">
+            </model-viewer-controls>
+        </div>
+    </div>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <script>
+        class ModelViewerControls extends HTMLElement {
+            constructor() {
+                super();
+                this.modelViewer = null;
+                this.rotationStep = 20; // 每次旋转的步长
+                this.rotationInterval = null; // 用于存储定时器 ID
+            }
+
+            connectedCallback() {
+                const shadow = this.attachShadow({ mode: 'open' });
+
+                // 获取外部属性，如 src
+                const modelSrc = this.getAttribute('src');
+                const modelAlt = this.getAttribute('alt');
+                shadow.innerHTML = `
+                    <style>
+                        :host {
+                            display: block;
+                            width: 100%;
+                            height: 500px; /* 或者根据需要设置 */
+                        }
+                        .container {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            padding:0 0 100px;
+
+                            overflow: hidden;
+                        }
+                        .model-viewer-element {
+                            width: 100%;
+                            overflow: hidden;
+                            height: 100%;
+                        }
+                        .controls {
+                            position: absolute;
+                            bottom: 20px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            z-index: 10;
+                            display: flex;
+                            gap: 10px;
+                        }
+                        .controls button {
+                            padding: 10px 20px;
+                            border: 1px solid #ccc;
+                            cursor: pointer;
+                            background-color: #f0f0f0;
+                            border-radius: 5px;
+                        }
+                    </style>
+                    
+                    <div class="container">
+                        <model-viewer
+                            class="model-viewer-element"
+                            src="${modelSrc}"
+                            alt="${modelAlt}">
+                        </model-viewer>
+                        
+                        <div class="controls">
+                            <button id="rotate-right">向左旋转</button>
+                            <button id="rotate-left">向右旋转</button>
+                        </div>
+                    </div>
+                `;
+
+                // 在 Shadow DOM 中找到 model-viewer 和按钮
+                this.modelViewer = shadow.querySelector('.model-viewer-element');
+                const rotateLeftButton = shadow.getElementById('rotate-left');
+                const rotateRightButton = shadow.getElementById('rotate-right');
+
+                // 绑定长按事件
+                this.addLongPressListeners(rotateLeftButton, -1);
+                this.addLongPressListeners(rotateRightButton, 1);
+
+                // 引入 model-viewer 脚本
+                if (!window.ModelViewer) {
+                    const script = document.createElement('script');
+                    script.type = 'module';
+                    script.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js';
+                    document.head.appendChild(script);
+                }
+            }
+
+
+            addLongPressListeners(button, direction) {
+                button.addEventListener('mousedown', () => this.startRotation(direction));
+                button.addEventListener('touchstart', () => this.startRotation(direction));
+                button.addEventListener('mouseup', () => this.stopRotation());
+                button.addEventListener('touchend', () => this.stopRotation());
+                button.addEventListener('mouseleave', () => this.stopRotation());
+            }
+
+            startRotation(direction) {
+                this.stopRotation();
+                this.rotationInterval = setInterval(() => {
+                    this.rotate(direction);
+                }, 100);
+            }
+
+            stopRotation() {
+                if (this.rotationInterval) {
+                    clearInterval(this.rotationInterval);
+                    this.rotationInterval = null;
+                }
+            }
+
+            rotate(direction) {
+                if (!this.modelViewer) return;
+
+                const currentOrbit = this.modelViewer.cameraOrbit.split(' ');
+                let theta = parseFloat(currentOrbit[0]);
+
+                theta = (theta + this.rotationStep * direction + 360) % 360;
+
+                this.modelViewer.cameraOrbit = `${theta}deg ${currentOrbit[1]} ${currentOrbit[2]}`;
+            }
+        }
+ 
+        customElements.define('model-viewer-controls', ModelViewerControls);
+    </script>
+</body>
+
+</html>

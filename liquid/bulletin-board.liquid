@@ -1,0 +1,491 @@
+{% style %}
+  /* 公告栏 */
+  bulletin-board {
+    visibility: hidden;
+    display: block;
+    background-color: var(--bg-color);
+    padding-top: var(--mob-padding-top);
+    padding-bottom: var(--mob-padding-bottom);
+    color: var(--text-color);
+    opacity: 0;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media (min-width: 768px) {
+    bulletin-board {
+      padding-top: var(--pc-padding-top);
+      padding-bottom: var(--pc-padding-bottom);
+    }
+  }
+  bulletin-board {
+    transform: translateY(-100%);
+  }
+  bulletin-board.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  bulletin-board .bulletin-board__wrapper {
+    position: relative;
+  }
+  bulletin-board .bulletin-board__wrapper .close__icon {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    z-index: 10;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+  bulletin-board .bulletin-board__wrapper .close__icon svg {
+    fill: var(--text-color);
+  }
+  /* 
+  .bulletin-board__swiper {
+    @apply md:h-fit;
+  } */
+  bulletin-board .swiper-slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    bulletin-board .swiper-slide {
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+  bulletin-board .swiper-slide .content {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+  }
+  bulletin-board .swiper-slide .content p {
+    margin-bottom: 0px;
+  }
+  bulletin-board .swiper-slide .content strong {
+    color: var(--text-h-color);
+  }
+  bulletin-board .swiper-slide .countdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--countdown-color);
+  }
+  bulletin-board .swiper-slide .countdown .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  bulletin-board .swiper-slide .countdown .icon svg {
+    width: 100%;
+    height: 100%;
+  }
+{% endstyle %}
+
+<bulletin-board
+  style="
+    --bg-color:{{ section.settings.bg_color  }};
+    --text-color:{{ section.settings.text_color }};
+    --text-h-color: {{ section.settings.text_h_color }};
+    --countdown-color:{{ section.settings.countdown_color }};
+    --pc-padding-top: {{ section.settings.padding_top }}px;
+    --pc-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --mob-padding-top: {{ section.settings.padding_top_M }}px;
+    --mob-padding-bottom: {{ section.settings.padding_bottom_M }}px;
+  "
+  data-delay="{{ section.settings.delay }}"
+  class="active"
+  {% if section.settings.box_id != blank %}
+    id="{{ section.settings.box_id }}"
+  {% endif %}
+  {% if section.settings.box_class != blank %}
+    class="{{ section.settings.box_class }}"
+  {% endif %}
+>
+  <div class="{{ section.settings.containernew }} bulletin-board__wrapper">
+    <div class="swiper bulletin-board__swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <a
+            {% if block.settings.link != blank %}
+              href="{{ block.settings.link }}"
+            {% endif %}
+            {{ block.shopify_attributes }}
+            class="swiper-slide"
+          >
+            <div class="content">
+              {{ block.settings.content }}
+            </div>
+            {% if block.settings.show_countdown %}
+              <div
+                class="countdown"
+                data-expiry="{{ block.settings.expiry }}"
+                data-timeZone="{{ block.settings.time_zone }}"
+              >
+                <div class="icon">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path opacity="0.9"
+                        d="M23.9961 44.002C35.0418 44.002 43.9961 35.0477 43.9961 24.002C43.9961 12.9563 35.0418 4.00195 23.9961 4.00195C12.9504 4.00195 3.99609 12.9563 3.99609 24.002C3.99609 35.0477 12.9504 44.002 23.9961 44.002Z"
+                        fill="#fff" />
+                    <path d="M16.5 24H30.75" stroke="#000" stroke-width="1.875" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M24.1289 16.5L31.6289 24L24.1289 31.5" stroke="#000" stroke-width="1.875"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="box" dd>00d</span>
+                <span class="box" hh>00h</span>
+                <span class="box" mm>00m</span>
+                <span class="box" ss>00s</span>
+              </div>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="close__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+        <path
+            d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z" />
+      </svg>
+    </div>
+  </div>
+</bulletin-board>
+
+<script>
+  window.customElements.get('bulletin-board') ||
+    window.customElements.define(
+      'bulletin-board',
+      class extends HTMLElement {
+        constructor() {
+          super();
+        }
+        connectedCallback() {
+          if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', () => {
+              this.initSwiper();
+              this.handleClose();
+
+              const slides = this.querySelectorAll('.swiper-slide');
+              slides.forEach((slide) => {
+                const countdown = slide.querySelector('.countdown');
+                if (countdown) {
+                  const expiry = countdown.getAttribute('data-expiry');
+                  const timeZone = countdown.getAttribute('data-timeZone');
+                  const timer = this.timer(expiry, timeZone);
+                  timer.init();
+                  const remainingTime = timer.time();
+                  countdown.querySelector('.box[dd]').textContent = `${remainingTime.days}d`;
+                  countdown.querySelector('.box[hh]').textContent = `${remainingTime.hours}h`;
+                  countdown.querySelector('.box[mm]').textContent = `${remainingTime.minutes}m`;
+                  countdown.querySelector('.box[ss]').textContent = `${remainingTime.seconds}s`;
+                  setInterval(() => {
+                    const remainingTime = timer.time();
+                    countdown.querySelector('.box[dd]').textContent = `${remainingTime.days}d`;
+                    countdown.querySelector('.box[hh]').textContent = `${remainingTime.hours}h`;
+                    countdown.querySelector('.box[mm]').textContent = `${remainingTime.minutes}m`;
+                    countdown.querySelector('.box[ss]').textContent = `${remainingTime.seconds}s`;
+                  }, 1000);
+                }
+              });
+            });
+          } else {
+            this.initSwiper();
+            this.handleClose();
+
+            const slides = this.querySelectorAll('.swiper-slide');
+            slides.forEach((slide) => {
+              const countdown = slide.querySelector('.countdown');
+              if (countdown) {
+                const expiry = countdown.getAttribute('data-expiry');
+                const timeZone = countdown.getAttribute('data-timeZone');
+                const timer = this.timer(expiry, timeZone);
+                timer.init();
+                const remainingTime = timer.time();
+                countdown.querySelector('.box[dd]').textContent = `${remainingTime.days}d`;
+                countdown.querySelector('.box[hh]').textContent = `${remainingTime.hours}h`;
+                countdown.querySelector('.box[mm]').textContent = `${remainingTime.minutes}m`;
+                countdown.querySelector('.box[ss]').textContent = `${remainingTime.seconds}s`;
+                setInterval(() => {
+                  const remainingTime = timer.time();
+                  countdown.querySelector('.box[dd]').textContent = `${remainingTime.days}d`;
+                  countdown.querySelector('.box[hh]').textContent = `${remainingTime.hours}h`;
+                  countdown.querySelector('.box[mm]').textContent = `${remainingTime.minutes}m`;
+                  countdown.querySelector('.box[ss]').textContent = `${remainingTime.seconds}s`;
+                }, 1000);
+              }
+            });
+          }
+        }
+
+        getDeadlineUTC(deadline, timeZone) {
+          const dtf = new Intl.DateTimeFormat('en-US', {
+            timeZone,
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false,
+          });
+
+          const parts = dtf.formatToParts(new Date(deadline));
+          const map = {};
+          for (const p of parts) map[p.type] = p.value;
+          const localStr = `${map.year}-${map.month}-${map.day}T${map.hour}:${map.minute}:${map.second}`;
+          return new Date(localStr).getTime();
+        }
+
+        timer(expiry, timeZone) {
+          const deadlineUTC = new Date(expiry).getTime();
+          const _this = this;
+          return {
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            format(value) {
+              return value < 0 ? '00' : value < 10 ? `0${value}` : value;
+            },
+            updateCountdown() {
+              const nowUTC = _this.getDeadlineUTC(new Date(), timeZone);
+
+              let diff = Math.max(0, deadlineUTC - nowUTC);
+
+              this.days = Math.floor(diff / (1000 * 60 * 60 * 24));
+              diff %= 1000 * 60 * 60 * 24;
+
+              this.hours = Math.floor(diff / (1000 * 60 * 60));
+              diff %= 1000 * 60 * 60;
+
+              this.minutes = Math.floor(diff / (1000 * 60));
+              diff %= 1000 * 60;
+
+              this.seconds = Math.floor(diff / 1000);
+            },
+            init() {
+              this.updateCountdown();
+              setInterval(() => {
+                this.updateCountdown();
+              }, 1000);
+            },
+            time() {
+              return {
+                days: this.format(this.days),
+                hours: this.format(this.hours),
+                minutes: this.format(this.minutes),
+                seconds: this.format(this.seconds),
+              };
+            },
+          };
+        }
+
+        handleClose() {
+          const close = this.querySelector('.close__icon');
+          close.addEventListener('click', () => {
+            this.classList.remove('active');
+          });
+        }
+
+        initSwiper() {
+          const bannerSwiper = this.querySelector('.bulletin-board__swiper');
+          const delay = this.getAttribute('data-delay');
+          const swiper = new Swiper(bannerSwiper, {
+            slidesPerView: 1,
+            // direction: 'vertical',
+            loop: true,
+            autoHeight: true,
+            autoplay: {
+              delay: Number(delay),
+            },
+          });
+        }
+      }
+    );
+</script>
+
+{% schema %}
+{
+  "name": "公告栏",
+  "disabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "containernew",
+      "label": "容器宽度选择",
+      "default": "width-full",
+      "options": [
+        {
+          "value": "width-full",
+          "label": "全宽"
+        },
+        {
+          "value": "page-width",
+          "label": "容器宽度"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "box_id",
+      "label": "盒子ID名"
+    },
+    {
+      "type": "text",
+      "id": "box_class",
+      "label": "盒子类名"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_top_M",
+      "label": "移动端上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_M",
+      "label": "移动端下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "色值配置区",
+      "info": "色值配置区"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "文本颜色",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "text_h_color",
+      "label": "高亮文本颜色",
+      "default": "#FF9521"
+    },
+    {
+      "type": "color",
+      "id": "countdown_color",
+      "label": "倒计时颜色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "number",
+      "id": "delay",
+      "label": "自动轮播时间",
+      "default": 5000
+    }
+  ],
+  "blocks": [
+    {
+      "name": "内容",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "内容"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "链接"
+        },
+        {
+          "type": "header",
+          "content": "倒计时配置"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_countdown",
+          "label": "显示倒计时",
+          "default": false
+        },
+        {
+          "type": "text",
+          "label": "截止时间",
+          "id": "expiry"
+        },
+        {
+          "type": "select",
+          "id": "time_zone",
+          "options": [
+            {
+              "value": "America/Los_Angeles",
+              "label": "洛杉矶"
+            },
+            {
+              "value": "America/New_York",
+              "label": "纽约"
+            },
+            {
+              "value": "Asia/Shanghai",
+              "label": "北京"
+            }
+          ],
+          "label": "时区",
+          "default": "Asia/Shanghai"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "公告栏",
+      "category": "新增功能版块"
+    }
+  ]
+}
+{% endschema %}

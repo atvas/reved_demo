@@ -1,0 +1,107 @@
+<style>
+  [data-section-id="{{ section.id }}"] {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top | append: 'px' }};
+    padding-bottom: {{ section.settings.padding_bottom | append: 'px' }};
+  }
+  .width-full {
+    width: 100%;
+  }
+  @media(max-width: 768px) {
+    [data-section-id="{{ section.id }}"] {
+      padding-top: {{ section.settings.padding_top_M |  append: 'px' }};
+      padding-bottom: {{ section.settings.padding_bottom_M |  append: 'px' }};
+    }
+  }
+</style>
+<div data-section-id="{{ section.id }}" class="TabProductN">
+  <div class="{{ section.settings.containernew }}"></div>
+</div>
+
+{% schema %}
+  {
+    "name": "测试",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "select",
+        "id": "containernew",
+        "label": "容器宽度选择",
+        "default": "width-full",
+        "options": [
+          {
+            "value": "width-full",
+            "label": "全宽"
+          }, {
+            "value": "page-width",
+            "label": "容器宽度"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "box_id",
+        "label": "盒子ID名"
+      },
+      {
+        "type": "text",
+        "id": "box_class",
+        "label": "盒子类名"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "上边距",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "下边距",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "padding_top_M",
+        "label": "移动端上边距",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "padding_bottom_M",
+        "label": "移动端下边距",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      }, {
+        "type": "header",
+        "content": "色值配置区",
+        "info": "色值配置区"
+      }, {
+        "type": "color",
+        "id": "bg_color",
+        "label": "背景颜色",
+        "default": "#fff"
+      }
+    ],
+    "presets": [
+      {
+        "name": "测试",
+        "category": "新增功能版块"
+      }
+    ]
+  }
+{% endschema %}

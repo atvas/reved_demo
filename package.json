@@ -1,0 +1,19 @@
+{
+  "name": "postcss",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "scripts": {
+    "css": "postcss src/main.css -o dist/styles.min.css -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cssnano": "^7.0.6",
+    "postcss-banner": "^4.0.1",
+    "postcss-import": "^16.1.0",
+    "postcss-nested": "^7.0.2",
+    "postcss-preset-env": "^10.1.1",
+    "tailwindcss": "^3.4.16"
+  }
+}
