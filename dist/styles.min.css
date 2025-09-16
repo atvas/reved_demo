@@ -1330,8 +1330,8 @@ celebrity-videos .celebrity-videos__swiper .swiper-pagination {
 }
 celebrity-videos .celebrity-videos__swiper .swiper-pagination {
       transform: none;
-        --swiper-pagination-color: #000;
-        --swiper-pagination-bullet-width:10px;
+      --swiper-pagination-color: #000;
+      --swiper-pagination-bullet-width: 10px;
     }
 celebrity-videos .celebrity-videos__swiper .swiper-pagination .swiper-pagination-bullet {
   height: 3px;
@@ -1365,7 +1365,7 @@ celebrity-videos .celebrity-videos__swiper .swiper-slide .image_wrapper .play_im
   position: absolute;
   top: 50%;
   left: 50%;
-          transform: translate(-50%,-50%);
+          transform: translate(-50%, -50%);
 }
 celebrity-videos .celebrity-videos__swiper .swiper-slide .image_wrapper .play_image svg {
   fill: #fff !important;
@@ -1383,6 +1383,7 @@ celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper {
 celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .title {
   font-size: 0.875rem;
   line-height: 1.25rem;
+  color: var(--content-color);
 }
 celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content {
   display: -webkit-box;
@@ -1394,6 +1395,7 @@ celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content 
 celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content .fen {
   font-size: 0.875rem;
   line-height: 1.25rem;
+  color: var(--name-color);
 }
 celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content .celebrity-info {
   display: -webkit-box;
@@ -1401,9 +1403,177 @@ celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content 
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: var(--name-color);
 }
 celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content .celebrity-info img {
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 50%;
+}
+celebrity-videos .modal {
+  visibility: hidden;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 50;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(000, 000, 000, 0.8);
+}
+celebrity-videos .modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+celebrity-videos .modal .modal-content {
+  position: relative;
+  aspect-ratio: 3/2;
+  width: 100%;
+  max-width: 1200px;
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, var(--tw-bg-opacity, 1));
+}
+@media (min-width: 768px) {
+  celebrity-videos .modal .modal-content {
+    aspect-ratio: 16 / 9;
+  }
+}
+celebrity-videos .modal .modal-content iframe {
+  width: 100%;
+  height: 100%;
+}
+celebrity-videos .modal .modal-content .close-btn {
+  position: absolute;
+  top: -50px;
+  right: 0px;
+  cursor: pointer;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
+}
+@media (min-width: 768px) {
+  celebrity-videos .modal .modal-content .close-btn {
+    right: -50px;
+  }
+}
+/* 外链合作 */
+link-cooperation {
+  display: block;
+  background-color: var(--bg-color);
+  padding-top: var(--mob-padding-top);
+  padding-bottom: var(--mob-padding-bottom);
+}
+@media (min-width: 768px) {
+  link-cooperation {
+    padding-top: var(--pc-padding-top);
+    padding-bottom: var(--pc-padding-bottom);
+  }
+}
+link-cooperation .content-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: var(--block-bg);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  link-cooperation .content-wrapper {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+link-cooperation .link-cooperation__swiper {
+  width: 100%;
+}
+link-cooperation .link-cooperation__swiper .swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+link-cooperation .link-cooperation__swiper .swiper-slide .content {
+  max-width: var(--content-max-w);
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--text-color);
+}
+link-cooperation .link-cooperation__swiper .swiper-slide .learn_more {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--link-color);
+  text-decoration-line: underline;
+}
+link-cooperation .link-cooperation__swiper .swiper-button-next,
+    link-cooperation .link-cooperation__swiper .swiper-button-prev {
+  margin-top: 0px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+@media (min-width: 768px) {
+  link-cooperation .link-cooperation__swiper .swiper-button-next,
+    link-cooperation .link-cooperation__swiper .swiper-button-prev {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+link-cooperation .link-cooperation__swiper .swiper-button-next,
+    link-cooperation .link-cooperation__swiper .swiper-button-prev {
+      transform: none;
+    }
+link-cooperation .link-cooperation__swiper .swiper-button-next::after, link-cooperation .link-cooperation__swiper .swiper-button-prev::after {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
+}
+link-cooperation .link-cooperation__swiper .swiper-button-prev {
+  left: 5%;
+}
+link-cooperation .link-cooperation__swiper .swiper-button-next {
+  right: 5%;
+}
+link-cooperation .link-cooperation__thumbs {
+  margin-top: 2.5rem;
+  max-width: 100%;
+}
+link-cooperation .link-cooperation__thumbs .swiper-slide {
+  width: auto;
+      filter: grayscale(100%);
+}
+link-cooperation .link-cooperation__thumbs .swiper-slide-thumb-active {
+        filter: grayscale(0%);
+      }
+link-cooperation .link-cooperation__thumbs .swiper-slide img {
+  height: 30px;
+  width: auto;
 }

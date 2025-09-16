@@ -1,0 +1,368 @@
+{% style %}
+  /* 外链合作 */
+  link-cooperation {
+    display: block;
+    background-color: var(--bg-color);
+    padding-top: var(--mob-padding-top);
+    padding-bottom: var(--mob-padding-bottom);
+  }
+  @media (min-width: 768px) {
+    link-cooperation {
+      padding-top: var(--pc-padding-top);
+      padding-bottom: var(--pc-padding-bottom);
+    }
+  }
+  link-cooperation .content-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background-color: var(--block-bg);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  @media (min-width: 768px) {
+    link-cooperation .content-wrapper {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+  link-cooperation .link-cooperation__swiper {
+    width: 100%;
+  }
+  link-cooperation .link-cooperation__swiper .swiper-slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  link-cooperation .link-cooperation__swiper .swiper-slide .content {
+    max-width: var(--content-max-w);
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: var(--text-color);
+  }
+  link-cooperation .link-cooperation__swiper .swiper-slide .learn_more {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: var(--link-color);
+    text-decoration-line: underline;
+  }
+  link-cooperation .link-cooperation__swiper .swiper-button-next,
+  link-cooperation .link-cooperation__swiper .swiper-button-prev {
+    margin-top: 0px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  @media (min-width: 768px) {
+    link-cooperation .link-cooperation__swiper .swiper-button-next,
+    link-cooperation .link-cooperation__swiper .swiper-button-prev {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+  }
+  link-cooperation .link-cooperation__swiper .swiper-button-next,
+  link-cooperation .link-cooperation__swiper .swiper-button-prev {
+    transform: none;
+  }
+  link-cooperation .link-cooperation__swiper .swiper-button-next::after,
+  link-cooperation .link-cooperation__swiper .swiper-button-prev::after {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
+  }
+  link-cooperation .link-cooperation__swiper .swiper-button-prev {
+    left: 5%;
+  }
+  link-cooperation .link-cooperation__swiper .swiper-button-next {
+    right: 5%;
+  }
+  link-cooperation .link-cooperation__thumbs {
+    margin-top: 2.5rem;
+    max-width: 100%;
+  }
+  link-cooperation .link-cooperation__thumbs .swiper-slide {
+    width: auto;
+    filter: grayscale(100%);
+  }
+  link-cooperation .link-cooperation__thumbs .swiper-slide-thumb-active {
+    filter: grayscale(0%);
+  }
+  link-cooperation .link-cooperation__thumbs .swiper-slide img {
+    height: 30px;
+    width: auto;
+  }
+{% endstyle %}
+
+<link-cooperation
+  style="
+    --bg-color:{{ section.settings.bg_color  }};
+    --pc-padding-top: {{ section.settings.padding_top }}px;
+    --pc-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --mob-padding-top: {{ section.settings.padding_top_M }}px;
+    --mob-padding-bottom: {{ section.settings.padding_bottom_M }}px;
+    --block-bg:{{ section.settings.block_color }};
+    --block-top:64px;
+    --block-bottom:64px;
+    --content-max-w:{{ section.settings.content_max_w }}px;
+    --link-color:{{ section.settings.block_link_color }};
+    --text-color:{{ section.settings.block_text_color }};
+  "
+  {% if section.settings.box_id != blank %}
+    id="{{ section.settings.box_id }}"
+  {% endif %}
+  {% if section.settings.box_class != blank %}
+    class="{{ section.settings.box_class }}"
+  {% endif %}
+>
+  <div class="{{ section.settings.containernew }}">
+    <div class="content-wrapper">
+      <div class="swiper link-cooperation__swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide" {{ block.shopify_attributes }}>
+              <div class="content">
+                {{ block.settings.content }}
+              </div>
+              {% if block.settings.link != blank %}
+                <a class="learn_more" href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <div class="swiper link-cooperation__thumbs">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 200 | image_tag }}
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</link-cooperation>
+
+<script>
+  window.customElements.get('link-cooperation') ||
+    window.customElements.define(
+      'link-cooperation',
+      class extends HTMLElement {
+        constructor() {
+          super();
+        }
+        connectedCallback() {
+          if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', () => {
+              this.initSwiper();
+            });
+          } else {
+            this.initSwiper();
+          }
+        }
+
+        initSwiper() {
+          const cooperationEl = this.querySelector('.link-cooperation__swiper');
+          const nextEl = this.querySelector('.swiper-button-next');
+          const prevEl = this.querySelector('.swiper-button-prev');
+
+          const thumbsSwiperEl = this.querySelector('.link-cooperation__thumbs');
+          const thumbsSwiper = new Swiper(thumbsSwiperEl, {
+            slidesPerView: 'auto',
+            spaceBetween: 32,
+          });
+
+          const swiper = new Swiper(cooperationEl, {
+            slidesPerView: 1,
+            spaceBetween: 12,
+            navigation: {
+              nextEl: nextEl,
+              prevEl: prevEl,
+            },
+            thumbs: {
+              swiper: thumbsSwiper,
+            },
+          });
+        }
+      }
+    );
+</script>
+
+{% schema %}
+{
+  "name": "外链合作",
+  "disabled_on": {
+    "groups": ["footer", "header"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "containernew",
+      "label": "容器宽度选择",
+      "default": "width-full",
+      "options": [
+        {
+          "value": "width-full",
+          "label": "全宽"
+        },
+        {
+          "value": "page-width",
+          "label": "容器宽度"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "box_id",
+      "label": "盒子ID名"
+    },
+    {
+      "type": "text",
+      "id": "box_class",
+      "label": "盒子类名"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_top_M",
+      "label": "移动端上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_M",
+      "label": "移动端下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "色值配置区",
+      "info": "色值配置区"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "卡片配置区"
+    },
+    {
+      "type": "range",
+      "id": "content_max_w",
+      "label": "内容最大宽度",
+      "min": 0,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "default": 880
+    },
+    {
+      "type": "color",
+      "id": "block_color",
+      "label": "卡片背景颜色",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "block_text_color",
+      "label": "卡片内容颜色",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "block_link_color",
+      "label": "卡片链接颜色",
+      "default": "#000"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "内容",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "内容"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "LOGO"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "链接文本",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "链接",
+          "info": "链接不为空的时候才显示"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "外链合作",
+      "category": "新增功能版块"
+    }
+  ]
+}
+{% endschema %}

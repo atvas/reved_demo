@@ -1,0 +1,567 @@
+{% style %}
+  /* 紅人視頻 */
+  celebrity-videos {
+    display: block;
+    background-color: var(--bg-color);
+    padding-top: var(--mob-padding-top);
+    padding-bottom: var(--mob-padding-bottom);
+  }
+  @media (min-width: 768px) {
+    celebrity-videos {
+      padding-top: var(--pc-padding-top);
+      padding-bottom: var(--pc-padding-bottom);
+    }
+  }
+  celebrity-videos .heading-wrapper {
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+  }
+  celebrity-videos .heading-wrapper .title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+  }
+  @media (min-width: 768px) {
+    celebrity-videos .heading-wrapper .title {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+  }
+  celebrity-videos .heading-wrapper .swiper-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  @media (min-width: 768px) {
+    celebrity-videos .heading-wrapper .swiper-button {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+  celebrity-videos .heading-wrapper .swiper-button .swiper-button-next,
+  celebrity-videos .heading-wrapper .swiper-button .swiper-button-prev {
+    position: static;
+    margin-top: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    --tw-bg-opacity: 1;
+    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, var(--tw-bg-opacity, 1));
+    transform: none;
+  }
+  celebrity-videos .heading-wrapper .swiper-button .swiper-button-next::after,
+  celebrity-videos .heading-wrapper .swiper-button .swiper-button-prev::after {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
+  }
+  celebrity-videos .celebrity-videos__swiper .heading-wrapper .title {
+    color: var(--title-color);
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-pagination {
+    position: static;
+    margin-top: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: -moz-fit-content;
+    height: -webkit-fit-content;
+    height: fit-content;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.75rem;
+  }
+  @media (min-width: 768px) {
+    celebrity-videos .celebrity-videos__swiper .swiper-pagination {
+      display: none;
+    }
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-pagination {
+    transform: none;
+    --swiper-pagination-color: #000;
+    --swiper-pagination-bullet-width: 10px;
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-pagination .swiper-pagination-bullet {
+    height: 3px;
+    border-radius: 2px;
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    max-width: 276px;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background-color: var(--block-bg);
+  }
+  @media (min-width: 768px) {
+    celebrity-videos .celebrity-videos__swiper .swiper-slide {
+      max-width: 342px;
+    }
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .image_wrapper {
+    position: relative;
+    cursor: pointer;
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .image_wrapper img {
+    height: auto;
+    width: 100%;
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .image_wrapper .play_image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .image_wrapper .play_image svg {
+    fill: #fff !important;
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 160px;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 0.75rem;
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .title {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--content-color);
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content .fen {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--name-color);
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content .celebrity-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--name-color);
+  }
+  celebrity-videos .celebrity-videos__swiper .swiper-slide .info_wrapper .content .celebrity-info img {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+  }
+  celebrity-videos .modal {
+    visibility: hidden;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 50;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(000, 000, 000, 0.8);
+  }
+  celebrity-videos .modal.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  celebrity-videos .modal .modal-content {
+    position: relative;
+    aspect-ratio: 3/2;
+    width: 100%;
+    max-width: 1200px;
+    --tw-bg-opacity: 1;
+    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, var(--tw-bg-opacity, 1));
+  }
+  @media (min-width: 768px) {
+    celebrity-videos .modal .modal-content {
+      aspect-ratio: 16 / 9;
+    }
+  }
+  celebrity-videos .modal .modal-content iframe {
+    width: 100%;
+    height: 100%;
+  }
+  celebrity-videos .modal .modal-content .close-btn {
+    position: absolute;
+    top: -50px;
+    right: 0px;
+    cursor: pointer;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
+  }
+  @media (min-width: 768px) {
+    celebrity-videos .modal .modal-content .close-btn {
+      right: -50px;
+    }
+  }
+{% endstyle %}
+
+<!-- 紅人視頻 -->
+<celebrity-videos
+  style="
+    --bg-color:{{ section.settings.bg_color  }};
+    --pc-padding-top: {{ section.settings.padding_top }}px;
+    --pc-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --mob-padding-top: {{ section.settings.padding_top_M }}px;
+    --mob-padding-bottom: {{ section.settings.padding_bottom_M }}px;
+    --block-bg:{{ section.settings.block_color }};
+    --title-color:{{ section.settings.block_color }};
+    --content-color:{{ section.settings.block_content_color }};
+    --name-color:{{ section.settings.block_name_color }};
+  "
+  {% if section.settings.box_id != blank %}
+    id="{{ section.settings.box_id }}"
+  {% endif %}
+  {% if section.settings.box_class != blank %}
+    class="{{ section.settings.box_class }}"
+  {% endif %}
+>
+  <div class="{{ section.settings.containernew }}">
+    <div class="heading-wrapper">
+      <div class="title">{{ section.settings.title }}</div>
+      <div class="swiper-button">
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+    <div class="swiper celebrity-videos__swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            <div class="image_wrapper" data-video-id="{{ block.settings.video.id }}">
+              <img
+                src="https://img.youtube.com/vi/{{ block.settings.video.id }}/mqdefault.jpg"
+                alt=""
+              >
+              {% comment %} <img src="https://i.ytimg.com/vi/5oFm8eLbWgs/maxresdefault.jpg" class="img-fluid"> {% endcomment %}
+              <div class="play_image">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                      d="M9.5 15.584V8.416a.5.5 0 0 1 .77-.42l5.576 3.583a.5.5 0 0 1 0 .842l-5.576 3.584a.5.5 0 0 1-.77-.42Z">
+                  </path>
+                  <path
+                      d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12m11-9.5A9.5 9.5 0 0 0 2.5 12a9.5 9.5 0 0 0 9.5 9.5a9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <div class="info_wrapper">
+              <div class="title">{{ block.settings.content }}</div>
+              <div class="content">
+                <div class="fen">{{ block.settings.fen }}</div>
+                <div class="celebrity-info">
+                  {% if block.settings.avatar != blank %}
+                    {{ block.settings.avatar | image_url: width: 100 | image_tag }}
+                  {% endif %}
+                  <span class="name">{{ block.settings.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <div id="youtube-video__modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <iframe
+        id="video-player"
+        width="560"
+        height="315"
+        src=""
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</celebrity-videos>
+
+<script>
+  window.customElements.get('celebrity-videos') ||
+    window.customElements.define(
+      'celebrity-videos',
+      class extends HTMLElement {
+        constructor() {
+          super();
+        }
+        connectedCallback() {
+          if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', () => {
+              this.initSwiper();
+              this.handleModelEvent();
+            });
+          } else {
+            this.initSwiper();
+            this.handleModelEvent();
+          }
+        }
+
+        handleModelEvent() {
+          const videoButtons = this.querySelectorAll('.swiper-slide .image_wrapper');
+          const modal = this.querySelector('#youtube-video__modal');
+          const videoPlayer = this.querySelector('#video-player');
+          const closeBtn = this.querySelector('.close-btn');
+
+          videoButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+              const videoId = button.dataset.videoId;
+              const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+              videoPlayer.src = videoUrl;
+              modal.classList.add('active');
+            });
+          });
+
+          closeBtn.addEventListener('click', () => {
+            // 隐藏弹窗
+            modal.classList.remove('active');
+            videoPlayer.src = '';
+          });
+
+          window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+              modal.classList.remove('active');
+              videoPlayer.src = '';
+            }
+          });
+        }
+
+        initSwiper() {
+          const bannerSwiper = this.querySelector('.celebrity-videos__swiper');
+          const nextEl = this.querySelector('.swiper-button-next');
+          const prevEl = this.querySelector('.swiper-button-prev');
+          const pagination = this.querySelector('.swiper-pagination');
+          const swiper = new Swiper(bannerSwiper, {
+            slidesPerView: 'auto',
+            spaceBetween: 12,
+            navigation: {
+              nextEl: nextEl,
+              prevEl: prevEl,
+            },
+            pagination: {
+              el: pagination,
+              clickable: true,
+            },
+          });
+        }
+      }
+    );
+</script>
+
+{% schema %}
+{
+  "name": "红人视频",
+  "disabled_on": {
+    "groups": ["footer", "header"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "containernew",
+      "label": "容器宽度选择",
+      "default": "width-full",
+      "options": [
+        {
+          "value": "width-full",
+          "label": "全宽"
+        },
+        {
+          "value": "page-width",
+          "label": "容器宽度"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "box_id",
+      "label": "盒子ID名"
+    },
+    {
+      "type": "text",
+      "id": "box_class",
+      "label": "盒子类名"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_top_M",
+      "label": "移动端上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_M",
+      "label": "移动端下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "标题配置"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Celebrity Videos"
+    },
+    {
+      "type": "header",
+      "content": "色值配置区",
+      "info": "色值配置区"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "标题颜色",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "block_color",
+      "label": "卡片背景颜色",
+      "default": "#F8F8F8"
+    },
+    {
+      "type": "color",
+      "id": "block_content_color",
+      "label": "卡片内容颜色",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "block_name_color",
+      "label": "卡片红人信息颜色",
+      "default": "#000"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "视频",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "媒体配置"
+        },
+        {
+          "type": "video_url",
+          "accept": ["youtube"],
+          "id": "video",
+          "label": "YouTube链接"
+        },
+        {
+          "type": "header",
+          "content": "内容配置"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "内容",
+          "default": "Jeack"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "红人头像"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "红人名称",
+          "default": "Jeack"
+        },
+        {
+          "type": "text",
+          "id": "fen",
+          "label": "粉丝数量",
+          "default": "8.8K views"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "红人视频",
+      "category": "新增功能版块"
+    }
+  ]
+}
+{% endschema %}
