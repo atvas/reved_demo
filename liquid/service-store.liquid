@@ -1,0 +1,360 @@
+{% style %}
+ 
+/* 服務門店 */
+service-store {
+  display: block;
+  background-color: var(--bg-color);
+  padding-top: var(--mob-padding-top);
+  padding-bottom: var(--mob-padding-bottom);
+}
+@media (min-width: 768px) {
+  service-store {
+    padding-top: var(--pc-padding-top);
+    padding-bottom: var(--pc-padding-bottom);
+  }
+}
+service-store .service-store__list {
+  display: grid;
+  grid-gap: 1rem;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  service-store .service-store__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+service-store .service-store__list .item {
+  position: relative;
+  height: auto;
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+service-store .service-store__list .item .media-wrapper {
+  height: 100%;
+  width: 100%;
+}
+service-store .service-store__list .item .media-wrapper img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+service-store .service-store__list .item .media-wrapper svg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+service-store .service-store__list .item .info-wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  service-store .service-store__list .item .info-wrapper {
+    padding: 2rem;
+  }
+}
+service-store .service-store__list .item .info-wrapper{
+        background: var(--mask-bg);
+      }
+service-store .service-store__list .item .info-wrapper .title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: var(--content-title-color);
+}
+@media (min-width: 768px) {
+  service-store .service-store__list .item .info-wrapper .title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+service-store .service-store__list .item .info-wrapper .desc {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--content-desc-color);
+}
+@media (min-width: 768px) {
+  service-store .service-store__list .item .info-wrapper .desc {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+service-store .service-store__list .item .info-wrapper a {
+  margin-top: 0.75rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 50px;
+  background-color: var(--btn-bg);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--btn-color);
+  text-decoration-line: none;
+}
+service-store .service-store__list .item .info-wrapper a:hover {
+  opacity: 0.8;
+}
+service-store .service-store__list .item .info-wrapper a svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--btn-color);
+  font-weight: 700;
+            transform: rotate(325deg);
+}
+{% endstyle %}
+
+<service-store
+  style="
+    --bg-color:{{ section.settings.bg_color  }};
+    --pc-padding-top: {{ section.settings.padding_top }}px;
+    --pc-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --mob-padding-top: {{ section.settings.padding_top_M }}px;
+    --mob-padding-bottom: {{ section.settings.padding_bottom_M }}px;
+    --content-title-color:{{ section.settings.content_title_color  }};
+    --content-desc-color:{{ section.settings.content_desc_color  }};
+    --btn-color:{{ section.settings.btn_text  }};
+    --btn-bg:{{ section.settings.btn_bg  }};
+    --mask-bg:{{ section.settings.mask_bg  }}
+  "
+  {% if section.settings.box_id != blank %}
+    id="{{ section.settings.box_id }}"
+  {% endif %}
+  {% if section.settings.box_class != blank %}
+    class="{{ section.settings.box_class }}"
+  {% endif %}
+>
+  <div class="{{ section.settings.containernew }}">
+    <div class="service-store__list">
+      {% for block in section.blocks %}
+        <div class="item" {{ block.shopify_attributes }}>
+          <div class="media-wrapper">
+            {% if block.settings.bg != blank %}
+              {{ block.settings.bg | image_url: width: 600 | image_tag }}
+            {% else %}
+              {{ 'collection-1' | placeholder_svg_tag }}
+            {% endif %}
+          </div>
+          <div class="info-wrapper">
+            <div class="title">{{ block.settings.title }}</div>
+            <div class="desc">{{ block.settings.desc }}</div>
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}">
+                <span>
+                  {{ block.settings.link_text }}
+                </span>
+                <svg
+                  t="1758027108300"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="1460"
+                  width="200"
+                  height="200"
+                >
+                  <path
+                      d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312z"
+                      p-id="1461"></path>
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</service-store>
+
+<!-- 門店地址 -->
+<script>
+  window.customElements.get('service-store') ||
+    window.customElements.define(
+      'service-store',
+      class extends HTMLElement {
+        constructor() {
+          super();
+        }
+        connectedCallback() {}
+      }
+    );
+</script>
+
+{% schema %}
+{
+  "name": "服务门店",
+  "disabled_on": {
+    "groups": ["footer", "header"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "containernew",
+      "label": "容器宽度选择",
+      "default": "width-full",
+      "options": [
+        {
+          "value": "width-full",
+          "label": "全宽"
+        },
+        {
+          "value": "page-width",
+          "label": "容器宽度"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "box_id",
+      "label": "盒子ID名"
+    },
+    {
+      "type": "text",
+      "id": "box_class",
+      "label": "盒子类名"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_top_M",
+      "label": "移动端上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_M",
+      "label": "移动端下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "色值配置区",
+      "info": "色值配置区"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "content_title_color",
+      "label": "标题",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "content_desc_color",
+      "label": "描述",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "按钮文字",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "按钮背景",
+      "default": "#FFCA60"
+    },
+    {
+      "type": "color_background",
+      "id": "mask_bg",
+      "label": "内容遮罩",
+      "default": "linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 100%)"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "内容",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "bg",
+          "label": "图片"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "描述"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "链接文本",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "链接",
+          "info": "链接不为空的时候才显示"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "服务门店",
+      "category": "新增功能版块"
+    }
+  ]
+}
+{% endschema %}

@@ -11,6 +11,191 @@
 </head>
 
 <body>
+
+    <!-- 首页blog -->
+    <home-blog style="
+     --bg-color:#ffffff;
+        --pc-padding-top: 100px;
+        --pc-padding-bottom: 100px;
+        --mob-padding-top: 64px;
+        --mob-padding-bottom: 64px;
+        ">
+        <div class="page-width">
+            <div class="heading">
+                <div class="title">HyBike Blogs</div>
+                <div class="view-all">
+                    <a href="">
+                      <button>
+                          <svg t="1758031942144" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="3393" width="200" height="200">
+                            <path
+                                d="M95.480474 879.768319V73.68846A28.756472 28.756472 0 0 1 124.236946 44.931988h566.143045l187.366389 190.511628v245.777972h44.931988V217.021501L708.802106 0h-584.11584A74.13778 74.13778 0 0 0 50.548486 73.68846v806.079859a74.13778 74.13778 0 0 0 73.68846 73.68846h293.8552v-44.931987H124.236946a28.756472 28.756472 0 0 1-28.756472-28.756473z"
+                                p-id="3394"></path>
+                            <path
+                                d="M198.374726 187.815709h482.569548v44.931987H198.374726zM207.810443 360.354541h567.041685v44.931988H207.810443zM198.374726 529.298815H427.977183v44.931988H198.374726zM949.18824 567.491005a75.935059 75.935059 0 0 0-54.367705-22.915314h-323.510311a82.225538 82.225538 0 0 0-81.326898 77.283019v324.858271a78.630978 78.630978 0 0 0 77.283019 77.283019h278.129004l128.056165-109.18473v-292.95656a76.384379 76.384379 0 0 0-24.263274-54.367705z m-22.016674 326.655551l-99.749012 84.921456H567.266345a33.249671 33.249671 0 0 1-32.351031-32.351031v-321.713032a37.74287 37.74287 0 0 1 36.84423-35.49627h324.858271a32.351031 32.351031 0 0 1 32.351031 32.351031z"
+                                p-id="3395"></path>
+                            <path
+                                d="M695.32251 815.515577L643.201404 763.843791l-31.901711 31.452392 84.022817 84.022817 156.812637-156.812638-31.901711-31.901711-124.910926 124.910926z"
+                                p-id="3396"></path>
+                        </svg>
+                        <span>View all</span>
+                      </button>
+                    </a>
+                </div>
+            </div>
+            <div class="home-blog-wrapper">
+                <div class="blog_first">
+                    <img src="https://revrbike.com/cdn/shop/files/20250820-P1142643.jpg?v=1756176455&width=600" alt="">
+                    <div class="content">
+                        <div class="time">
+                            <svg t="1758032700904" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="10523" width="200" height="200">
+                                <path
+                                    d="M453.228 781.672H170.319V409.18h650.457c11.686 0 21.16-9.473 21.16-21.16V206.29c0-11.686-9.474-21.16-21.16-21.16H660.945v-35.972c0-11.686-9.474-21.16-21.16-21.16-11.688 0-21.16 9.474-21.16 21.16v35.972H356.247v-35.972c0-11.686-9.473-21.16-21.16-21.16s-21.16 9.474-21.16 21.16v35.972H149.16c-11.687 0-21.16 9.474-21.16 21.16V790.44c0 18.5 14.822 33.55 33.04 33.55H453.23c11.686 0 21.16-9.472 21.16-21.16 0-11.686-9.475-21.16-21.161-21.16zM170.319 227.45h143.609v35.971c0 11.687 9.473 21.16 21.16 21.16s21.159-9.472 21.159-21.16V227.45h262.377v35.971c0 11.687 9.472 21.16 21.16 21.16 11.686 0 21.16-9.472 21.16-21.16V227.45h138.672v139.412H170.319V227.45zM690.5 483.1c-113.837 0-206.45 92.613-206.45 206.453C484.05 803.388 576.663 896 690.5 896s206.45-92.613 206.45-206.447c0-113.84-92.611-206.453-206.45-206.453z m0 370.58c-90.5 0-164.13-73.628-164.13-164.131s73.628-164.132 164.13-164.132c90.503 0 164.133 73.628 164.133 164.132S781.002 853.68 690.5 853.68zM390.104 640.816H246.218c-11.687 0-21.16 9.472-21.16 21.16 0 11.685 9.473 21.158 21.16 21.158h143.885c11.686 0 21.16-9.473 21.16-21.158-0.002-11.688-9.475-21.16-21.16-21.16z m0-119.489H246.218c-11.687 0-21.16 9.473-21.16 21.158 0 11.688 9.473 21.16 21.16 21.16h143.885c11.686 0 21.16-9.472 21.16-21.16-0.002-11.683-9.475-21.158-21.16-21.158z m413.071 147.067H711.66V617.61c0-11.687-9.472-21.16-21.159-21.16s-21.16 9.473-21.16 21.16v71.943c0 11.685 9.474 21.158 21.16 21.158h112.673c11.687 0 21.16-9.473 21.16-21.158 0.001-11.688-9.473-21.16-21.16-21.16z"
+                                    p-id="10524"></path>
+                            </svg>
+                            <span>Jul 22,2025</span>
+                        </div>
+                        <div class="title">Ebike vs Gravel Bike:Which Should YouChoose?</div>
+                        <div class="desc">When it comes to riding on rough conditions like gravel, it begs the
+                            question of whether an Ebike vs a gravel bike is best for you. Read..</div>
+                        <a href="">Read more</a>
+                    </div>
+                </div>
+
+                <div class="blog_last_list">
+                    <div class="item">
+                        <img src="https://revrbike.com/cdn/shop/files/20250820-P1142643.jpg?v=1756176455&width=600"
+                            alt="">
+                        <div class="content">
+                            <div class="time">
+                                <svg t="1758032700904" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="10523" width="200" height="200">
+                                    <path
+                                        d="M453.228 781.672H170.319V409.18h650.457c11.686 0 21.16-9.473 21.16-21.16V206.29c0-11.686-9.474-21.16-21.16-21.16H660.945v-35.972c0-11.686-9.474-21.16-21.16-21.16-11.688 0-21.16 9.474-21.16 21.16v35.972H356.247v-35.972c0-11.686-9.473-21.16-21.16-21.16s-21.16 9.474-21.16 21.16v35.972H149.16c-11.687 0-21.16 9.474-21.16 21.16V790.44c0 18.5 14.822 33.55 33.04 33.55H453.23c11.686 0 21.16-9.472 21.16-21.16 0-11.686-9.475-21.16-21.161-21.16zM170.319 227.45h143.609v35.971c0 11.687 9.473 21.16 21.16 21.16s21.159-9.472 21.159-21.16V227.45h262.377v35.971c0 11.687 9.472 21.16 21.16 21.16 11.686 0 21.16-9.472 21.16-21.16V227.45h138.672v139.412H170.319V227.45zM690.5 483.1c-113.837 0-206.45 92.613-206.45 206.453C484.05 803.388 576.663 896 690.5 896s206.45-92.613 206.45-206.447c0-113.84-92.611-206.453-206.45-206.453z m0 370.58c-90.5 0-164.13-73.628-164.13-164.131s73.628-164.132 164.13-164.132c90.503 0 164.133 73.628 164.133 164.132S781.002 853.68 690.5 853.68zM390.104 640.816H246.218c-11.687 0-21.16 9.472-21.16 21.16 0 11.685 9.473 21.158 21.16 21.158h143.885c11.686 0 21.16-9.473 21.16-21.158-0.002-11.688-9.475-21.16-21.16-21.16z m0-119.489H246.218c-11.687 0-21.16 9.473-21.16 21.158 0 11.688 9.473 21.16 21.16 21.16h143.885c11.686 0 21.16-9.472 21.16-21.16-0.002-11.683-9.475-21.158-21.16-21.158z m413.071 147.067H711.66V617.61c0-11.687-9.472-21.16-21.159-21.16s-21.16 9.473-21.16 21.16v71.943c0 11.685 9.474 21.158 21.16 21.158h112.673c11.687 0 21.16-9.473 21.16-21.158 0.001-11.688-9.473-21.16-21.16-21.16z"
+                                        p-id="10524"></path>
+                                </svg>
+                                <span>Jul 22,2025</span>
+                            </div>
+                            <div class="title">Ebike vs Gravel Bike:Which Should YouChoose?</div>
+                            <div class="desc">When it comes to riding on rough conditions like gravel, it begs the
+                                question of whether an Ebike vs a gravel bike is best for you. Read..</div>
+                            <a href="">Read more</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="https://revrbike.com/cdn/shop/files/20250820-P1142643.jpg?v=1756176455&width=600"
+                            alt="">
+                        <div class="content">
+                            <div class="time">
+                                <svg t="1758032700904" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="10523" width="200" height="200">
+                                    <path
+                                        d="M453.228 781.672H170.319V409.18h650.457c11.686 0 21.16-9.473 21.16-21.16V206.29c0-11.686-9.474-21.16-21.16-21.16H660.945v-35.972c0-11.686-9.474-21.16-21.16-21.16-11.688 0-21.16 9.474-21.16 21.16v35.972H356.247v-35.972c0-11.686-9.473-21.16-21.16-21.16s-21.16 9.474-21.16 21.16v35.972H149.16c-11.687 0-21.16 9.474-21.16 21.16V790.44c0 18.5 14.822 33.55 33.04 33.55H453.23c11.686 0 21.16-9.472 21.16-21.16 0-11.686-9.475-21.16-21.161-21.16zM170.319 227.45h143.609v35.971c0 11.687 9.473 21.16 21.16 21.16s21.159-9.472 21.159-21.16V227.45h262.377v35.971c0 11.687 9.472 21.16 21.16 21.16 11.686 0 21.16-9.472 21.16-21.16V227.45h138.672v139.412H170.319V227.45zM690.5 483.1c-113.837 0-206.45 92.613-206.45 206.453C484.05 803.388 576.663 896 690.5 896s206.45-92.613 206.45-206.447c0-113.84-92.611-206.453-206.45-206.453z m0 370.58c-90.5 0-164.13-73.628-164.13-164.131s73.628-164.132 164.13-164.132c90.503 0 164.133 73.628 164.133 164.132S781.002 853.68 690.5 853.68zM390.104 640.816H246.218c-11.687 0-21.16 9.472-21.16 21.16 0 11.685 9.473 21.158 21.16 21.158h143.885c11.686 0 21.16-9.473 21.16-21.158-0.002-11.688-9.475-21.16-21.16-21.16z m0-119.489H246.218c-11.687 0-21.16 9.473-21.16 21.158 0 11.688 9.473 21.16 21.16 21.16h143.885c11.686 0 21.16-9.472 21.16-21.16-0.002-11.683-9.475-21.158-21.16-21.158z m413.071 147.067H711.66V617.61c0-11.687-9.472-21.16-21.159-21.16s-21.16 9.473-21.16 21.16v71.943c0 11.685 9.474 21.158 21.16 21.158h112.673c11.687 0 21.16-9.473 21.16-21.158 0.001-11.688-9.473-21.16-21.16-21.16z"
+                                        p-id="10524"></path>
+                                </svg>
+                                <span>Jul 22,2025</span>
+                            </div>
+                            <div class="title">Ebike vs Gravel Bike:Which Should YouChoose?</div>
+                            <div class="desc">When it comes to riding on rough conditions like gravel, it begs the
+                                question of whether an Ebike vs a gravel bike is best for you. Read..</div>
+                            <a href="">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </home-blog>
+
+    <script>
+        window.customElements.get('home-blog') || window.customElements.define('home-blog', class extends HTMLElement {
+            constructor() {
+                super()
+            }
+            connectedCallback() {
+                if (document.readyState === 'loading') {
+                    window.addEventListener('DOMContentLoaded', () => {
+                    });
+                } else {
+                }
+            }
+        })
+
+    </script>
+
+
+
+    <!-- 門店地址 -->
+    <service-store style="
+        --bg-color:#ffffff;
+        --pc-padding-top: 100px;
+        --pc-padding-bottom: 100px;
+        --mob-padding-top: 64px;
+        --mob-padding-bottom: 64px;
+        --content-title-color:#ffffff;
+        --content-desc-color:#ffffff;
+        --btn-color:#000000;
+        --btn-bg:#FFCA60;
+        --mask-bg:linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 100%);
+        display: none;
+        ">
+        <div class="page-width">
+            <div class="service-store__list">
+                <div class="item">
+                    <div class="media-wrapper">
+                        <img src="https://cdn.shopify.com/s/files/1/0734/1277/1874/files/20250820-P1142643.jpg?v=1756176455"
+                            alt="">
+                    </div>
+                    <div class="info-wrapper">
+                        <div class="title">Find Rad Near You</div>
+                        <div class="desc">Our RadRetail stores and local partners can show you our ebike models, answer
+                            your questions, and set you up with a free test ride. </div>
+                        <a href="">Find a Store</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="media-wrapper">
+                        <img src="https://cdn.shopify.com/s/files/1/0734/1277/1874/files/20250820-P1142643.jpg?v=1756176455"
+                            alt="">
+                    </div>
+                    <div class="info-wrapper">
+                        <div class="title">Find Rad Near You</div>
+                        <div class="desc">Our RadRetail stores and local partners can show you our ebike models, answer
+                            your questions, and set you up with a free test ride. </div>
+                        <a href="">
+                            <span>Find a Store</span>
+                            <svg t="1758027108300" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="1460" width="200" height="200">
+                                <path
+                                    d="M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312z"
+                                    p-id="1461"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </service-store>
+
+    <script>
+        window.customElements.get('service-store') || window.customElements.define('service-store', class extends HTMLElement {
+            constructor() {
+                super()
+            }
+            connectedCallback() {
+                if (document.readyState === 'loading') {
+                    window.addEventListener('DOMContentLoaded', () => {
+                    });
+                } else {
+                }
+            }
+        })
+
+    </script>
+
+
     <!-- 外链合作 -->
     <link-cooperation style=" --bg-color:#ffffff;
         --pc-padding-top: 100px;
@@ -23,6 +208,7 @@
         --content-max-w:880px;
         --link-color:#000;
         --text-color:#000;
+        display: none;
         ">
         <div class="page-width">
             <div class="content-wrapper">
