@@ -694,7 +694,7 @@ home-blog{
         }
 
         .content{
-          @apply p-[2%] text-black flex flex-col gap-3 justify-end;
+          @apply p-[2%] text-black flex flex-col gap-3 justify-end max-w-[calc(50%-8px)] md:max-w-full;
           .time{
             @apply text-sm md:text-base flex gap-2 items-center;
             svg{
