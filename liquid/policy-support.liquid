@@ -1,0 +1,603 @@
+{% style %}
+    
+/* 政策支持 */
+policy-support {
+  display: block;
+  background-color: var(--bg-color);
+  padding-top: var(--mob-padding-top);
+  padding-bottom: var(--mob-padding-bottom);
+}
+@media (min-width: 768px) {
+  policy-support {
+    padding-top: var(--pc-padding-top);
+    padding-bottom: var(--pc-padding-bottom);
+  }
+}
+policy-support .support__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+@media (min-width: 768px) {
+  policy-support .support__list {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+policy-support .support__list .support__item-graphics {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+@media (min-width: 768px) {
+  policy-support .support__list .support__item-graphics {
+    width: calc(100% - var(--first-width) - 16px);
+  }
+  policy-support .support__list .support__item-graphics:first-child {
+    width: var(--first-width);
+  }
+}
+policy-support .support__list .support__item-graphics img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 510px;
+  min-height: 360px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+policy-support .support__list .support__item-graphics > svg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+policy-support .support__list .support__item-graphics .content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 6%;
+        background: var(--mask);
+}
+policy-support .support__list .support__item-graphics .content.bottom {
+  justify-content: flex-end;
+}
+policy-support .support__list .support__item-graphics .content .title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: var(--title-color);
+}
+@media (min-width: 768px) {
+  policy-support .support__list .support__item-graphics .content .title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+policy-support .support__list .support__item-graphics .content .desc {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--desc-color);
+}
+policy-support .support__list .support__item-graphics .content a {
+  margin-top: 1.5rem;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+}
+policy-support .support__list .support__item-graphics .content a button {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border-style: none;
+  background-color: var(--btn-bg);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--btn-color);
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+policy-support .support__list .support__item-graphics .content a button:hover {
+  background-color: var(--btn-color);
+  color: var(--btn-bg);
+}
+policy-support .support__list .support__item-team {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: var(--bg);
+}
+@media (min-width: 768px) {
+  policy-support .support__list .support__item-team {
+    width: calc(100% - var(--first-width) - 16px);
+  }
+  policy-support .support__list .support__item-team:first-child {
+    width: var(--first-width);
+  }
+}
+policy-support .support__list .support__item-team .content {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 1rem;
+  gap: 1rem;
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  policy-support .support__list .support__item-team .content {
+    gap: 2.25rem;
+    padding: 6%;
+  }
+}
+policy-support .support__list .support__item-team .content .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  policy-support .support__list .support__item-team .content .item {
+    gap: 1rem;
+  }
+}
+policy-support .support__list .support__item-team .content .item .item-icon svg {
+  width: 2.25rem;
+  height: 2.25rem;
+  fill: var(--title-color) !important;
+  color: var(--title-color);
+}
+@media (min-width: 768px) {
+  policy-support .support__list .support__item-team .content .item .item-icon svg {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+policy-support .support__list .support__item-team .content .item .title {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  color: var(--title-color);
+}
+@media (min-width: 768px) {
+  policy-support .support__list .support__item-team .content .item .title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+policy-support .support__list .support__item-team .content .item a {
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--link-color);
+  text-decoration-line: underline;
+}
+@media (min-width: 768px) {
+  policy-support .support__list .support__item-team .content .item a {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+{% endstyle %}
+
+<policy-support
+  style="
+     --bg-color:{{ section.settings.bg_color  }};
+    --pc-padding-top: {{ section.settings.padding_top }}px;
+    --pc-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --mob-padding-top: {{ section.settings.padding_top_M }}px;
+    --mob-padding-bottom: {{ section.settings.padding_bottom_M }}px;
+    --first-width:{{ section.settings.first_width }}%;
+  "
+  {% if section.settings.box_id != blank %}
+    id="{{ section.settings.box_id }}"
+  {% endif %}
+  {% if section.settings.box_class != blank %}
+    class="{{ section.settings.box_class }}"
+  {% endif %}
+>
+  <div class="{{ section.settings.containernew }}">
+    <div class="support__list">
+      {% for block in section.blocks %}
+        {% if block.type == 'graphics' %}
+          <div
+            class="support__item-graphics"
+            {{ block.shopify_attributes }}
+            style="
+              --btn-bg:{{ block.settings.btn_bg }};
+              --btn-color:{{ block.settings.btn_text }};
+              --title-color:{{ block.settings.title_color }};
+              --desc-color:{{ block.settings.desc_color }};
+              --mask:{{ block.settings.mask_bg }}
+            "
+          >
+            {% if block.settings.bg != blank %}
+              {{ block.settings.bg | image_url: width: 800 | image_tag }}
+            {% else %}
+              {{ 'collection-1' | placeholder_svg_tag }}
+            {% endif %}
+            <div class="content {{ block.settings.position }}">
+              <div class="title">{{ block.settings.title }}</div>
+              {% if block.settings.desc != blank %}
+                <div class="desc">{{ block.settings.desc }}</div>
+              {% endif %}
+
+              <a
+                {% if block.settings.link != blank %}
+                  href="{{ block.settings.link }}"
+                {% endif %}
+              >
+                <button>{{ block.settings.link_text }}</button>
+              </a>
+            </div>
+          </div>
+          {% elsif block.type == 'team' %}
+            <div class="support__item-team" 
+            {{ block.shopify_attributes }}
+            style="
+            --bg:{{ block.settings.bg_color }};
+            --title-color:{{ block.settings.title_color }};
+            --link-color:{{ block.settings.link_color }};
+            ">
+                <div class="content">
+                    {% for i in (1..4) %}
+                        {% assign title_key = 'team_title_' |  append: i %}
+                        {% assign icon_key = 'team_icon_' |  append: i %}
+                        {% assign url_key = 'team_url_' |  append: i %}
+                        <div class="item">
+                            <div class="item-icon">
+                                {{ block.settings[icon_key] }}
+                            </div>
+                            <div class="title">{{ block.settings[title_key] }}</div>
+                            <a href="{{ block.settings[url_key] }}">Learn More</a>
+                        </div>
+                        
+                    {% endfor %} 
+                </div>
+            </div>
+        {% endif %}
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</policy-support>
+
+   <script>
+        window.customElements.get('policy-support') || window.customElements.define('policy-support', class extends HTMLElement {
+            constructor() {
+                super()
+            }
+            connectedCallback() {
+                if (document.readyState === 'loading') {
+                    window.addEventListener('DOMContentLoaded', () => {
+                    });
+                } else {
+                }
+            }
+        })
+
+    </script>
+
+{% schema %}
+{
+  "name": "政策支持",
+  "disabled_on": {
+    "groups": ["footer", "header"]
+  },
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "select",
+      "id": "containernew",
+      "label": "容器宽度选择",
+      "default": "width-full",
+      "options": [
+        {
+          "value": "width-full",
+          "label": "全宽"
+        },
+        {
+          "value": "page-width",
+          "label": "容器宽度"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "box_id",
+      "label": "盒子ID名"
+    },
+    {
+      "type": "text",
+      "id": "box_class",
+      "label": "盒子类名"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_top_M",
+      "label": "移动端上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_M",
+      "label": "移动端下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "first_width",
+      "label": "第一个卡片宽度",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "%",
+      "default": 54
+    },
+    {
+      "type": "header",
+      "content": "色值配置区",
+      "info": "色值配置区"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#fff"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "图文",
+      "type": "graphics",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "bg",
+          "label": "背景"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "标题"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "链接文本",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "链接",
+          "info": "链接不为空的时候才显示"
+        },
+        {
+          "type": "header",
+          "content": "样式配置"
+        },
+        {
+            "type": "select",
+            "options": [
+                {
+                    "label" : "顶部",
+                    "value": "top"
+                },
+                {
+                    "label" : "底部",
+                    "value": "bottom"
+                }
+            ],
+            "label": "内容位置",
+            "id": "position",
+            "default": "top"
+        },
+        {
+          "type": "color_background",
+          "id": "mask_bg",
+          "label": "内容遮罩",
+          "default": "linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 100%)"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "标题颜色",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "desc_color",
+          "label": "描述",
+          "default": "#eeeeee"
+        },
+        {
+          "type": "color",
+          "id": "btn_text",
+          "label": "按钮文字",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg",
+          "label": "按钮背景",
+          "default": "#FFCA60"
+        }
+      ]
+    },
+    {
+      "name": "政策",
+      "type": "team",
+      "settings": [
+        {
+            "type": "header",
+            "content": "政策1"
+        },
+        {
+          "type": "html",
+          "id": "team_icon_1",
+          "label": "图标"
+        },
+        {
+          "type": "text",
+          "id": "team_title_1",
+          "label": "标题",
+          "default": "Local Customer"
+        },
+         {
+          "type": "url",
+          "id": "team_url_1",
+          "label": "链接"
+        },
+         {
+            "type": "header",
+            "content": "政策2"
+        },
+        {
+          "type": "html",
+          "id": "team_icon_2",
+          "label": "图标"
+        },
+        {
+          "type": "text",
+          "id": "team_title_2",
+          "label": "标题",
+          "default": "Free Shipping"
+        },
+         {
+          "type": "url",
+          "id": "team_url_2",
+          "label": "链接"
+        },
+        {
+            "type": "header",
+            "content": "政策3"
+        },
+        {
+          "type": "html",
+          "id": "team_icon_3",
+          "label": "图标"
+        },
+        {
+          "type": "text",
+          "id": "team_title_3",
+          "label": "标题",
+          "default": "15-Days Returns"
+        },
+         {
+          "type": "url",
+          "id": "team_url_3",
+          "label": "链接"
+        },
+        {
+            "type": "header",
+            "content": "政策4"
+        },
+        {
+          "type": "html",
+          "id": "team_icon_4",
+          "label": "图标"
+        },
+        {
+          "type": "text",
+          "id": "team_title_4",
+          "label": "标题",
+          "default": "2-Year Warranty"
+        },
+         {
+          "type": "url",
+          "id": "team_url_4",
+          "label": "链接"
+        },
+         {
+          "type": "header",
+          "content": "样式配置"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "背景颜色",
+          "default": "#f4f4f4"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "标题颜色",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "link_color",
+          "label": "链接颜色",
+          "default": "#272727"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "政策支持",
+      "category": "新增功能版块"
+    }
+  ]
+}
+{% endschema %}

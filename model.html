@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLB 模型展示</title>
+  
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+  <style>
+    /* 容器样式，用于控制 3D 模型的尺寸和位置 */
+    .product-3d-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      height: 600px;
+      border: 1px solid #ddd;
+    }
+
+    /* Model Viewer 标签的样式 */
+    model-viewer {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 颜色选择器和营销标签的样式 */
+    .controls {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    /* 营销标签的样式 */
+    .marketing-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: #ff0000;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 14px;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product-3d-wrapper">
+    <div class="marketing-tag">
+      <span>新品上市</span>
+    </div>
+
+    <model-viewer
+      id="product-model"
+      src="https://cdn.shopify.com/s/files/1/0827/5826/4102/files/shoe.glb?v=1717666275"
+      alt="Product 3D Model"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      shadow-intensity="1"
+      camera-controls
+      auto-rotate
+    ></model-viewer>
+  </div>
+
+  <div class="controls">
+    <label for="color-select">选择颜色：</label>
+    <select id="color-select">
+      <option value="red" selected>红色</option>
+      <option value="blue">蓝色</option>
+    </select>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const colorSelect = document.getElementById('color-select');
+      const modelViewer = document.getElementById('product-model');
+
+      // 存储不同颜色模型的文件路径
+      // 在 Shopify 中，这些路径将使用 {{ 'file.glb' | asset_url }} 语法
+      const models = {
+        'red': 'https://cdn.shopify.com/s/files/1/0827/5826/4102/files/shoe.glb?v=1717666275',
+        'blue': 'https://cdn.shopify.com/s/files/1/0827/5826/4102/files/desk.glb?v=1717666324'
+      };
+      
+      // 监听颜色选择器的变化
+      colorSelect.addEventListener('change', function(event) {
+        const selectedColor = event.target.value;
+        const newModelPath = models[selectedColor];
+
+        if (newModelPath) {
+          modelViewer.src = newModelPath;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

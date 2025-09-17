@@ -1,0 +1,442 @@
+{% style %}
+  /* 模型 */
+  product-model-views {
+    display: block;
+    background-color: var(--bg-color);
+    padding-top: var(--mob-padding-top);
+    padding-bottom: var(--mob-padding-bottom);
+  }
+  @media (min-width: 768px) {
+    product-model-views {
+      padding-top: var(--pc-padding-top);
+      padding-bottom: var(--pc-padding-bottom);
+    }
+  }
+  product-model-views .model-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+  }
+  @media (min-width: 768px) {
+    product-model-views .model-wrapper {
+      padding: 2.5rem;
+    }
+  }
+  product-model-views .model-wrapper {
+    background: var(--model-wrapper-bg);
+  }
+  product-model-views .model-wrapper .model-bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  product-model-views .model-wrapper .model-bg img,
+  product-model-views .model-wrapper .model-bg svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  product-model-views .model-wrapper .model-main {
+    position: relative;
+    z-index: 1;
+  }
+  product-model-views .model-wrapper .model-main model-viewer {
+    display: block;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+  }
+  @media (min-width: 768px) {
+    product-model-views .model-wrapper .model-main model-viewer {
+      aspect-ratio: 21/9;
+      min-height: 550px;
+    }
+  }
+  product-model-views .model-wrapper .model-main .model-tips {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    font-weight: 700;
+  }
+  @media (min-width: 768px) {
+    product-model-views .model-wrapper .model-main .model-tips {
+      margin-bottom: -1.5rem;
+      flex-direction: column;
+      gap: 2px;
+    }
+  }
+  product-model-views .model-wrapper .model-main .model-tips svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--tips-color);
+  }
+  @media (min-width: 768px) {
+    product-model-views .model-wrapper .model-main .model-tips svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  product-model-views .model-wrapper .model-main .model-tips span {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    color: var(--tips-color);
+  }
+  product-model-views .model-wrapper .marketing—tag {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 0.5rem;
+  }
+  @media (min-width: 768px) {
+    product-model-views .model-wrapper .marketing—tag {
+      top: 2rem;
+      right: 2rem;
+    }
+  }
+  product-model-views .model-wrapper .marketing—tag span {
+    border-radius: 0.5rem;
+    background-color: var(--tag-bg);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    color: var(--tag-color);
+  }
+  @media (min-width: 768px) {
+    product-model-views .model-wrapper .marketing—tag span {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+  }
+{% endstyle %}
+<product-model-views
+  style="
+    --bg-color:{{ section.settings.bg_color  }};
+    --pc-padding-top: {{ section.settings.padding_top }}px;
+    --pc-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --mob-padding-top: {{ section.settings.padding_top_M }}px;
+    --mob-padding-bottom: {{ section.settings.padding_bottom_M }}px;
+    --model-wrapper-bg: {{ section.settings.model_bg_color }};
+    --tips-color:{{ section.settings.tips_color }}
+  "
+  {% if section.settings.box_id != blank %}
+    id="{{ section.settings.box_id }}"
+  {% endif %}
+  {% if section.settings.box_class != blank %}
+    class="{{ section.settings.box_class }}"
+  {% endif %}
+>
+  <div class="{{ section.settings.containernew }}">
+    <div class="model-wrapper">
+      <div class="model-bg">
+        {% if section.settings.bg_type == 'grid' %}
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                    <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#e5e5e5" stroke-width="1" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        {% endif %}
+
+        {% if section.settings.bg_type == 'image' %}
+          {{ section.settings.model_bg_img | image_url: width: 1920 | image_tag }}
+        {% endif %}
+      </div>
+      <div class="model-main">
+        {% if section.settings.model != blank %}
+          {% assign glb_url = section.settings.model %}
+        {% endif %}
+        <model-viewer
+          id="product-model"
+          src="{{ glb_url }}"
+          alt="Product 3D Model"
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+          shadow-intensity="1"
+          camera-controls
+          auto-rotate
+          disable-tap
+          disable-zoom
+        ></model-viewer>
+        <div class="model-tips">
+          <svg
+            t="1758100951007"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="16538"
+            width="200"
+            height="200"
+          >
+            <path
+                d="M887.466667 439.466667l-25.6 59.733333c55.466667 25.6 89.6 55.466667 89.6 81.066667 0 55.466667-140.8 123.733333-354.133334 136.533333l4.266667 64c204.8-12.8 413.866667-81.066667 413.866667-200.533333 0-38.4-25.6-93.866667-128-140.8zM725.333333 452.266667c29.866667 0 55.466667-12.8 72.533334-34.133334 17.066667-21.333333 25.6-55.466667 25.6-98.133333 0-42.666667-8.533333-76.8-25.6-98.133333-17.066667-21.333333-38.4-34.133333-72.533334-34.133334-29.866667 0-55.466667 12.8-72.533333 34.133334-17.066667 21.333333-25.6 55.466667-25.6 98.133333 0 42.666667 8.533333 76.8 25.6 98.133333 17.066667 25.6 38.4 34.133333 72.533333 34.133334zM691.2 256c8.533333-12.8 17.066667-21.333333 29.866667-21.333333 12.8 0 25.6 8.533333 29.866666 21.333333 8.533333 12.8 8.533333 34.133333 8.533334 64s-4.266667 51.2-8.533334 68.266667c-8.533333 12.8-17.066667 21.333333-29.866666 21.333333-12.8 0-25.6-8.533333-29.866667-21.333333-4.266667-12.8-8.533333-38.4-8.533333-68.266667 0-29.866667 4.266667-51.2 8.533333-64zM870.4 298.666667c8.533333 4.266667 17.066667 8.533333 29.866667 8.533333 12.8 0 21.333333-4.266667 29.866666-8.533333 8.533333-4.266667 17.066667-12.8 21.333334-21.333334 4.266667-8.533333 8.533333-17.066667 8.533333-29.866666 0-12.8-4.266667-21.333333-8.533333-29.866667-4.266667-8.533333-12.8-17.066667-21.333334-21.333333-8.533333-4.266667-17.066667-8.533333-29.866666-8.533334-12.8 0-21.333333 4.266667-29.866667 8.533334-8.533333 4.266667-17.066667 12.8-21.333333 21.333333-4.266667 8.533333-8.533333 17.066667-8.533334 29.866667 0 12.8 4.266667 21.333333 8.533334 29.866666 8.533333 8.533333 12.8 17.066667 21.333333 21.333334z m12.8-72.533334c4.266667-4.266667 12.8-8.533333 21.333333-8.533333s12.8 4.266667 21.333334 8.533333c4.266667 4.266667 8.533333 12.8 8.533333 21.333334s-4.266667 17.066667-8.533333 21.333333c-4.266667 4.266667-12.8 8.533333-21.333334 8.533333s-12.8-4.266667-21.333333-8.533333c-4.266667-4.266667-8.533333-12.8-8.533333-21.333333s4.266667-12.8 8.533333-21.333334zM593.066667 324.266667c-8.533333-12.8-17.066667-21.333333-25.6-29.866667-12.8-8.533333-25.6-12.8-38.4-12.8-12.8 0-25.6 4.266667-38.4 8.533333-8.533333 8.533333-17.066667 21.333333-21.333334 29.866667v-4.266667c0-51.2 21.333333-76.8 59.733334-76.8 8.533333 0 21.333333 0 29.866666 4.266667 8.533333 4.266667 21.333333 8.533333 29.866667 17.066667l17.066667-42.666667c-8.533333-8.533333-21.333333-17.066667-34.133334-21.333333-12.8-4.266667-25.6-8.533333-42.666666-8.533334-34.133333 0-64 12.8-85.333334 34.133334-21.333333 25.6-29.866667 59.733333-29.866666 102.4s8.533333 72.533333 25.6 93.866666c17.066667 21.333333 42.666667 34.133333 76.8 34.133334 17.066667 0 29.866667-4.266667 42.666666-12.8 12.8-8.533333 21.333333-17.066667 29.866667-29.866667 8.533333-12.8 12.8-25.6 12.8-42.666667s-4.266667-29.866667-8.533333-42.666666z m-51.2 72.533333c-8.533333 8.533333-17.066667 12.8-25.6 12.8-12.8 0-21.333333-4.266667-25.6-12.8-8.533333-8.533333-8.533333-17.066667-8.533334-29.866667 0-12.8 4.266667-21.333333 8.533334-29.866666 8.533333-8.533333 17.066667-12.8 25.6-12.8 12.8 0 21.333333 4.266667 25.6 12.8 8.533333 8.533333 8.533333 17.066667 8.533333 29.866666 0 12.8-4.266667 25.6-8.533333 29.866667zM281.6 405.333333c-25.6 0-51.2-4.266667-72.533333-21.333333l-17.066667 42.666667c8.533333 8.533333 25.6 17.066667 38.4 21.333333 17.066667 4.266667 34.133333 8.533333 51.2 8.533333 29.866667 0 51.2-8.533333 68.266667-21.333333s25.6-29.866667 25.6-55.466667c0-17.066667-4.266667-29.866667-12.8-38.4-4.266667-12.8-17.066667-21.333333-29.866667-25.6 12.8-4.266667 21.333333-12.8 29.866667-21.333333 8.533333-8.533333 8.533333-21.333333 8.533333-34.133333 0-21.333333-8.533333-38.4-21.333333-51.2s-38.4-17.066667-68.266667-17.066667c-17.066667 0-34.133333 4.266667-46.933333 8.533333-12.8 4.266667-29.866667 8.533333-38.4 21.333334l17.066666 42.666666c21.333333-21.333333 42.666667-25.6 64-25.6 25.6 0 38.4 8.533333 38.4 29.866667 0 8.533333-4.266667 17.066667-8.533333 21.333333-8.533333 4.266667-17.066667 8.533333-29.866667 8.533334h-38.4v46.933333h42.666667c25.6 0 42.666667 8.533333 42.666667 29.866667 0 21.333333-12.8 29.866667-42.666667 29.866666zM426.666667 712.533333c-46.933333-4.266667-98.133333-12.8-136.533334-17.066666-34.133333-8.533333-68.266667-17.066667-98.133333-25.6-72.533333-25.6-119.466667-59.733333-119.466667-89.6 0-25.6 29.866667-55.466667 85.333334-76.8l-25.6-59.733334C29.866667 490.666667 8.533333 541.866667 8.533333 580.266667c0 42.666667 29.866667 102.4 162.133334 149.333333 34.133333 12.8 68.266667 21.333333 106.666666 29.866667 42.666667 8.533333 98.133333 17.066667 149.333334 21.333333v55.466667l128-85.333334-128-85.333333v46.933333z"
+                p-id="16539"></path>
+          </svg>
+          {% if section.settings.tips != blank %}
+            <span>{{ section.settings.tips }}</span>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="marketing—tag">
+        {% for block in section.blocks %}
+          <span
+            style="
+              --tag-bg:{{ block.settings.bg_color }};
+              --tag-color:{{ block.settings.title_color }};
+            "
+          >
+            {{ block.settings.title }}
+          </span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</product-model-views>
+
+<script>
+  window.customElements.get('product-model-views') ||
+    window.customElements.define(
+      'product-model-views',
+      class extends HTMLElement {
+        constructor() {
+          super();
+        }
+        connectedCallback() {
+          if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', () => {
+              this.pullInModelViwes();
+            });
+          } else {
+            this.pullInModelViwes();
+          }
+        }
+
+        pullInModelViwes() {
+          if (!window.ModelViewer) {
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js';
+            document.head.appendChild(script);
+          }
+        }
+      }
+    );
+</script>
+
+{% schema %}
+{
+  "name": "产品模型查看",
+  "disabled_on": {
+    "groups": ["footer", "header"]
+  },
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "select",
+      "id": "containernew",
+      "label": "容器宽度选择",
+      "default": "width-full",
+      "options": [
+        {
+          "value": "width-full",
+          "label": "全宽"
+        },
+        {
+          "value": "page-width",
+          "label": "容器宽度"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "box_id",
+      "label": "盒子ID名"
+    },
+    {
+      "type": "text",
+      "id": "box_class",
+      "label": "盒子类名"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_top_M",
+      "label": "移动端上边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_M",
+      "label": "移动端下边距",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "first_width",
+      "label": "第一个卡片宽度",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "%",
+      "default": 54
+    },
+    {
+      "type": "header",
+      "content": "样式配置区",
+      "info": "样式配置区"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "tips_color",
+      "label": "提示文字颜色",
+      "default": "#999999"
+    },
+    {
+      "type": "color_background",
+      "id": "model_bg_color",
+      "label": "模型背景颜色",
+      "default": "linear-gradient(0deg, rgba(202, 202, 202, 0.979), rgba(168, 168, 168, 0.61) 100%);"
+    },
+    {
+      "type": "select",
+      "options": [
+        {
+          "label": "网格",
+          "value": "grid"
+        },
+        {
+          "label": "图片",
+          "value": "image"
+        },
+        {
+          "value": "not",
+          "label": "无"
+        }
+      ],
+      "id": "bg_type",
+      "label": "背景类型",
+      "default": "grid"
+    },
+    {
+      "type": "image_picker",
+      "id": "model_bg_img",
+      "label": "模型背景图",
+      "visible_if": "{{ section.settings.bg_type == 'image' }}"
+    },
+    {
+      "type": "header",
+      "content": "内容配置区"
+    },
+    {
+      "type": "url",
+      "id": "model",
+      "label": "模型链接",
+      "info": "需要先将glb文件上传至后台文件中,再复制链接粘贴到此处"
+    },
+    {
+      "type": "text",
+      "id": "tips",
+      "label": "提示文字",
+      "default": "Drag to view in 360°"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "标签",
+      "type": "tag",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "内容"
+        },
+        {
+          "type": "header",
+          "content": "样式配置"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "文字颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "背景",
+          "default": "#3f3f3f"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "产品模型查看",
+      "category": "新增功能版块"
+    }
+  ]
+}
+{% endschema %}

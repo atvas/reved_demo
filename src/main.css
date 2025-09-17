@@ -529,7 +529,7 @@ link-cooperation {
   .content-wrapper {
     @apply bg-[--block-bg] rounded-xl px-4 md:px-8  py-8 md:py-16 flex flex-col items-center justify-center;
   }
- 
+
   .link-cooperation__swiper {
     @apply w-full;
     .swiper-slide {
@@ -578,146 +578,274 @@ link-cooperation {
 }
 
 /* 服務門店 */
-service-store{
-   @apply block bg-[--bg-color]  pt-[--mob-padding-top] pb-[--mob-padding-bottom] md:pt-[--pc-padding-top] md:pb-[--pc-padding-bottom];
+service-store {
+  @apply block bg-[--bg-color]  pt-[--mob-padding-top] pb-[--mob-padding-bottom] md:pt-[--pc-padding-top] md:pb-[--pc-padding-bottom];
 
-   .service-store__list{
+  .service-store__list {
     @apply grid md:grid-cols-2 gap-4;
 
-    .item{
+    .item {
       @apply h-auto relative rounded-xl overflow-hidden min-h-[360px];
 
-      .media-wrapper{
+      .media-wrapper {
         @apply w-full h-full;
 
-        img{
-          @apply w-full h-full object-cover block
+        img {
+          @apply w-full h-full object-cover block;
         }
 
-        svg{
-          @apply size-full object-cover
+        svg {
+          @apply size-full object-cover;
         }
       }
 
-      .info-wrapper{
+      .info-wrapper {
         @apply absolute top-0 left-0 size-full p-4 md:p-8 flex flex-col gap-2 justify-end;
         background: var(--mask-bg);
-        .title{
+        .title {
           @apply text-2xl md:text-4xl text-[--content-title-color];
         }
-        .desc{
-          @apply text-sm md:text-base text-[--content-desc-color] 
+        .desc {
+          @apply text-sm md:text-base text-[--content-desc-color];
         }
 
-        a{
+        a {
           @apply mt-3 no-underline py-[10px] px-6 rounded-[50px] w-fit text-base flex items-center gap-1 text-[--btn-color] bg-[--btn-bg] hover:opacity-80;
 
-          svg{
+          svg {
             @apply size-4 fill-[--btn-color] font-bold;
             transform: rotate(325deg);
           }
         }
       }
     }
-   }
+  }
 }
 
 /* 首页blog */
-home-blog{
+home-blog {
   @apply block bg-[--bg-color]  pt-[--mob-padding-top] pb-[--mob-padding-bottom] md:pt-[--pc-padding-top] md:pb-[--pc-padding-bottom];
 
-  .heading{
+  .heading {
     @apply flex justify-between items-center mb-6;
 
-    .title{
+    .title {
       @apply text-2xl md:text-4xl font-bold;
     }
 
-   
-    .view-all{
-       a{
-      @apply no-underline cursor-pointer
-    }
-      button{
+    .view-all {
+      a {
+        @apply no-underline cursor-pointer;
+      }
+      button {
         @apply cursor-pointer bg-white flex items-center text-base gap-2 border border-black py-1 px-4 md:py-2 md:px-5 rounded-l relative duration-100 ease-in-out;
- 
- 
-        svg{
-          @apply size-4
+
+        svg {
+          @apply size-4;
         }
       }
     }
   }
 
-  .home-blog-wrapper{
+  .home-blog-wrapper {
     @apply grid md:grid-cols-2 gap-3 md:gap-6;
 
-    .blog_first{
+    .blog_first {
       @apply relative rounded-xl overflow-hidden;
 
-      img{
+      img {
         @apply w-full h-full object-cover block min-h-[360px];
       }
 
-      .content{
+      .content {
         @apply absolute size-full top-0 left-0 p-[5%] text-white flex flex-col gap-4 justify-end;
-        background:linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 100%);
-        .time{
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.8),
+          rgba(0, 0, 0, 0) 100%
+        );
+        .time {
           @apply flex gap-2 items-center;
-          svg{
-            @apply size-5 fill-white
+          svg {
+            @apply size-5 fill-white;
           }
         }
 
-        .title{
+        .title {
           @apply text-xl md:text-3xl font-bold line-clamp-2;
         }
 
-        .desc{
-          @apply  text-sm md:text-base line-clamp-3
+        .desc {
+          @apply text-sm md:text-base line-clamp-3;
         }
 
-        a{
-          @apply underline text-sm md:text-base text-white
+        a {
+          @apply underline text-sm md:text-base text-white;
         }
       }
     }
 
-    .blog_last_list{
+    .blog_last_list {
       @apply flex gap-3 md:gap-6 flex-col;
 
-      .item{
+      .item {
         @apply flex gap-2;
 
-        img{
-           @apply w-full h-auto object-cover block rounded-xl max-w-[50%] md:max-w-[46%];
+        img {
+          @apply w-full h-auto object-cover block rounded-xl max-w-[50%] md:max-w-[46%];
         }
 
-        .content{
+        .content {
           @apply p-[2%] text-black flex flex-col gap-3 justify-end max-w-[calc(50%-8px)] md:max-w-full;
-          .time{
+          .time {
             @apply text-sm md:text-base flex gap-2 items-center;
-            svg{
-              @apply size-5 fill-black
+            svg {
+              @apply size-5 fill-black;
             }
           }
 
-          .title{
+          .title {
             @apply text-lg leading-[1.2] md:text-2xl font-bold line-clamp-2;
           }
 
-          .desc{
-            @apply text-sm md:text-base line-clamp-2 md:line-clamp-3
+          .desc {
+            @apply text-sm md:text-base line-clamp-2 md:line-clamp-3;
           }
 
-          a{
-            @apply underline text-sm md:text-base text-black
+          a {
+            @apply underline text-sm md:text-base text-black;
           }
         }
       }
+
+      .dividing-line {
+        @apply hidden md:block w-full h-[1px] bg-[#eee];
+      }
+    }
+  }
+}
+
+/* 政策支持 */
+policy-support {
+  @apply block bg-[--bg-color]  pt-[--mob-padding-top] pb-[--mob-padding-bottom] md:pt-[--pc-padding-top] md:pb-[--pc-padding-bottom];
+
+  .support__list {
+    @apply flex flex-col md:flex-row gap-2 md:gap-4;
+
+    .support__item-graphics {
+      @apply relative rounded-xl overflow-hidden md:w-[calc(100%-var(--first-width)-16px)];
+
+      &:first-child {
+        @apply md:w-[--first-width];
+      }
+
+      img {
+        @apply size-full object-cover block max-h-[510px] min-h-[360px];
+      }
+
+      > svg {
+        @apply size-full object-cover;
+      }
+
+      .content {
+        @apply absolute top-0 left-0 size-full p-[6%] flex gap-3 flex-col;
+        background: var(--mask);
+
+        &.bottom {
+          @apply justify-end;
+        }
+
+        .title {
+          @apply text-2xl md:text-3xl font-bold text-[--title-color];
+        }
+
+        .desc {
+          @apply text-base text-[--desc-color];
+        }
+
+        a {
+          @apply w-fit mt-6;
+          button {
+            @apply cursor-pointer border-none hover:bg-[--btn-color] hover:text-[--btn-bg] text-[--btn-color] bg-[--btn-bg] py-2 px-4 rounded-lg text-sm duration-500 ease-in-out;
+          }
+        }
+      }
+    }
+
+    .support__item-team {
+      @apply relative rounded-xl overflow-hidden md:w-[calc(100%-var(--first-width)-16px)] bg-[--bg] flex justify-center items-center;
+
+      &:first-child {
+        @apply md:w-[--first-width];
+      }
+
+      .content {
+        @apply p-4 md:p-[6%] grid grid-cols-2 gap-4 md:gap-9 size-full;
+
+        .item {
+          @apply flex flex-col gap-2 md:gap-4 justify-center items-center py-5 text-center;
+          .item-icon {
+            svg {
+              @apply size-9 md:size-12 !fill-[--title-color] text-[--title-color];
+            }
+          }
+
+          .title {
+            @apply text-base font-bold md:text-xl text-[--title-color];
+          }
+
+          a {
+            @apply w-fit underline text-sm md:text-base text-[--link-color];
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 模型 */
+product-model-views {
+  @apply block bg-[--bg-color]  pt-[--mob-padding-top] pb-[--mob-padding-bottom] md:pt-[--pc-padding-top] md:pb-[--pc-padding-bottom];
+
+  .model-wrapper {
+    @apply p-2 md:p-10 rounded-xl relative overflow-hidden;
+    background: var(--model-wrapper-bg);
+
+    .model-bg {
+      @apply absolute top-0 left-0 size-full flex justify-center items-center;
+
+      img,svg {
+        @apply size-full object-cover block;
+      }
+
       
-      .dividing-line{
-        @apply hidden md:block w-full h-[1px] bg-[#eee]
+    }
+
+    .model-main {
+      @apply relative z-[1];
+
+      model-viewer {
+        @apply size-full aspect-square md:aspect-[21/9] md:min-h-[550px] block;
+      }
+
+      .model-tips {
+        @apply text-center font-bold flex justify-center items-center md:flex-col gap-2 md:gap-[2px] md:-mb-6;
+
+        svg {
+          @apply size-6 md:size-8 fill-[--tips-color];
+        }
+
+        span {
+          @apply text-xs text-[--tips-color] font-bold;
+        }
+      }
+    }
+
+    .marketing—tag {
+      @apply absolute top-3 right-3 md:top-8 md:right-8 flex gap-2;
+
+      span {
+        @apply px-2 py-1 md:px-4 md:py-2 rounded-lg bg-[--tag-bg] text-[--tag-color] text-xs md:text-sm font-bold;
       }
     }
   }
