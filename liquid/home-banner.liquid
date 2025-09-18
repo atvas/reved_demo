@@ -1,0 +1,522 @@
+{% style %}
+
+/* 首页banner */
+home-banner {
+  display: block;
+}
+home-banner .banner-wrapper {
+  max-height: 100vh;
+  width: 100%;
+}
+home-banner .banner-wrapper .banner-swiper {
+  height: 100%;
+}
+home-banner .banner-wrapper img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+home-banner .banner-wrapper.max {
+  height: 100vh;
+}
+@media (min-width: 768px) {
+  home-banner .banner-wrapper.base {
+    height: 960px;
+  }
+  home-banner .banner-wrapper.mini {
+    height: 660px;
+  }
+}
+home-banner .banner-wrapper .swiper-slide {
+  position: relative;
+}
+home-banner .banner-wrapper .swiper-slide .content-wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: calc(100% - 128px);
+  width: 100%;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+@media (min-width: 768px) {
+  home-banner .banner-wrapper .swiper-slide .content-wrapper {
+    height: calc(100% - 200px);
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+home-banner .banner-wrapper .swiper-slide .content-wrapper .container {
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  max-width: 90%;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container {
+    gap: 1.25rem;
+  }
+}
+home-banner .banner-wrapper .swiper-slide .content-wrapper .container .min-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: var(--min-title);
+}
+@media (min-width: 768px) {
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container .min-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+home-banner .banner-wrapper .swiper-slide .content-wrapper .container .title {
+  max-width: var(--content-max-width);
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  color: var(--title-color);
+}
+@media (min-width: 768px) {
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container .title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container .title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+home-banner .banner-wrapper .swiper-slide .content-wrapper .container .desc {
+  max-width: var(--content-max-width);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--desc-color);
+}
+@media (min-width: 768px) {
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container .desc {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+home-banner .banner-wrapper .swiper-slide .content-wrapper .container .desc strong {
+  color: var(--strong-color);
+}
+home-banner .banner-wrapper .swiper-slide .content-wrapper .container .banner-link-btn {
+  margin-top: 1.5rem;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+}
+@media (min-width: 768px) {
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container .banner-link-btn {
+    margin-top: 2.5rem;
+  }
+}
+home-banner .banner-wrapper .swiper-slide .content-wrapper .container .banner-link-btn button {
+  min-width: 160px;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border-style: none;
+  background-color: var(--btn-bg);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--btn-color);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+home-banner .banner-wrapper .swiper-slide .content-wrapper .container .banner-link-btn button:hover {
+  background-color: var(--btn-color);
+  color: var(--btn-bg);
+}
+@media (min-width: 768px) {
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container .banner-link-btn button {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+/* 方向 */
+@media (max-width: 768px) {
+            home-banner .banner-wrapper .swiper-slide .content-wrapper .container.m-top-center {
+    align-items: center;
+    text-align: center;
+  }
+
+            home-banner .banner-wrapper .swiper-slide .content-wrapper .container.m-middle-left {
+    justify-content: center;
+  }
+
+            home-banner .banner-wrapper .swiper-slide .content-wrapper .container.m-middle-center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+            home-banner .banner-wrapper .swiper-slide .content-wrapper .container.m-bottom-center {
+    justify-content: flex-end;
+    text-align: center;
+  }
+          }
+@media (min-width: 768px) {
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container.top-center {
+    align-items: center;
+    text-align: center;
+  }
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container.middle-left {
+    justify-content: center;
+  }
+  home-banner .banner-wrapper .swiper-slide .content-wrapper .container.middle-center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+home-banner .banner-wrapper .swiper-pagination {
+      --swiper-pagination-color: #000;
+    }
+home-banner .banner-wrapper .swiper-pagination .swiper-pagination-bullet {
+  height: 3px;
+  width: 2.5rem;
+  border-radius: 2px;
+}
+{% endstyle %}
+<home-banner
+  data-autoplay="{{ section.settings.autoplay }}"
+  data-delay="{{ section.settings.delay |  times: 1000 }}"
+>
+  <div class="banner-wrapper {{ section.settings.image_h }}">
+    <div class="swiper banner-swiper ">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div
+            class="swiper-slide"
+            style="
+              --content-max-width:{{ block.settings.max_content }}px;
+              --btn-bg:{{ block.settings.link_bg_color }};
+              --btn-color: {{ block.settings.link_text_color }};
+              --title-color: {{ block.settings.title_color }};
+              --desc-color: {{ block.settings.desc_color }};
+              --strong-color: {{ block.settings.desc_h_color }};
+              --min-title: {{ block.settings.min_title_color }};
+            "
+            {{ block.shopify_attributes }}
+          >
+            <picture>
+              <source
+                srcset="{{ block.settings.pc_image |  image_url: width: 2560 }}"
+                media="(min-width: 768px)"
+              >
+              <img
+                src="{{ block.settings.m_image |  image_url: width: 750 }}"
+                alt=""
+                loading="lazy"
+                width="auto"
+                height="auto"
+              >
+            </picture>
+            <!-- top-left top-center  middle-left middle-center -->
+            <!-- m-top-left m-top-center m-middle-left m-middle-center m-bottom-center -->
+            <div class="content-wrapper">
+              <div class="container {{ block.settings.pc_position }} {{ block.settings.m_position }}">
+                {% if block.settings.min_title != blank %}
+                  <div class="min-title">{{ block.settings.min_title }}</div>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  <div class="title">{{ block.settings.title }}</div>
+                {% endif %}
+                {% if block.settings.desc != blank %}
+                  <div class="desc">
+                    {{ block.settings.desc }}
+                  </div>
+                {% endif %}
+                <a href="{{ block.settings.link }}" class="banner-link-btn">
+                  <button>{{ block.settings.link_text }}</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</home-banner>
+
+<script>
+  window.customElements.get('home-banner') ||
+    window.customElements.define(
+      'home-banner',
+      class extends HTMLElement {
+        constructor() {
+          super();
+        }
+
+        connectedCallback() {
+           if (document.readyState === 'loading') {
+                window.addEventListener('DOMContentLoaded', () => {
+                    this.initSwiper();
+                });
+            } else {
+                this.initSwiper();
+            }
+        }
+
+        initSwiper() {
+          const bannerSwiper = this.querySelector('.banner-swiper');
+          // const nextEl = productSwiper.querySelector('.swiper-button-next')
+          // const prevEl = productSwiper.querySelector('.swiper-button-prev')
+
+           const delay = this.getAttribute('data-delay');
+          const autoplay = this.getAttribute('data-autoplay') == 'true';
+          const pagination = this.querySelector('.swiper-pagination');
+          const swiper = new Swiper(bannerSwiper, {
+            slidesPerView: 1,
+            loop: {{ section.settings.swiper_loop }},
+            // navigation: {
+            //     nextEl: nextEl,
+            //     prevEl: prevEl,
+            // },
+            pagination: {
+              el: pagination,
+              clickable: true,
+            },
+            autoplay: autoplay
+              ? {
+                  delay: delay || 5000,
+                  disableOnInteraction: false,
+                }
+              : false
+          });
+        }
+      }
+    );
+</script>
+{% schema %}
+{
+  "name": "媒体幻灯片",
+  "settings": [
+    {
+      "type": "select",
+      "id": "image_h",
+      "label": "幻灯片高度",
+      "options": [
+        {
+          "label": "自适应",
+          "value": "auto"
+        },
+        {
+          "label": "小",
+          "value": "mini"
+        },
+        {
+          "label": "中",
+          "value": "base"
+        },
+        {
+          "label": "大",
+          "value": "max"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "checkbox",
+      "id": "swiper_loop",
+      "label": "幻灯片循环",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "自动轮播",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "自动轮播时间",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "s",
+      "default": 5,
+      "visible_if": "{{ section.settings.autoplay == true }}"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "图片",
+      "type": "image",
+      "settings": [
+        {
+          "type": "header",
+          "content": "图片设置"
+        },
+        {
+          "type": "image_picker",
+          "id": "pc_image",
+          "label": "桌面图片"
+        },
+        {
+          "type": "image_picker",
+          "id": "m_image",
+          "label": "移动图片"
+        },
+        {
+          "type": "header",
+          "content": "内容设置"
+        },
+
+        {
+          "type": "textarea",
+          "id": "min_title",
+          "label": "小标题"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "描述"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "链接"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "链接文本",
+          "default": "SHOP NOW"
+        },
+        {
+          "type": "header",
+          "content": "内容样式设置"
+        },
+        {
+          "type": "select",
+          "options": [
+            {
+              "label": "左上角",
+              "value": "top-left"
+            },
+            {
+              "label": "顶部剧中",
+              "value": "top-center"
+            },
+            {
+              "label": "左中",
+              "value": "middle-left"
+            },
+            {
+              "label": "居中",
+              "value": "middle-center"
+            }
+          ],
+          "label": "桌面位置",
+          "id": "pc_position",
+          "default": "top-left"
+        },
+        {
+          "type": "select",
+          "options": [
+            {
+              "label": "左上角",
+              "value": "m-top-left"
+            },
+            {
+              "label": "顶部剧中",
+              "value": "m-top-center"
+            },
+            {
+              "label": "左中",
+              "value": "m-middle-left"
+            },
+            {
+              "label": "居中",
+              "value": "m-middle-center"
+            },
+            {
+              "label": "底部剧中",
+              "value": "m-bottom-center"
+            }
+          ],
+          "label": "移动位置",
+          "id": "m_position",
+          "default": "m-top-left"
+        },
+        {
+          "type": "number",
+          "id": "max_content",
+          "label": "内容最大宽度",
+          "default": 680,
+          "info": "单位:px"
+        },
+        {
+          "type": "color",
+          "id": "min_title_color",
+          "label": "小标题颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "标题颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "desc_color",
+          "label": "描述颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "desc_h_color",
+          "label": "描述高亮颜色",
+          "default": "#FF911C"
+        },
+        {
+          "type": "color",
+          "id": "link_text_color",
+          "label": "按钮文字颜色",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "link_bg_color",
+          "label": "按钮背景颜色",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "媒体幻灯片"
+    }
+  ]
+}
+{% endschema %}

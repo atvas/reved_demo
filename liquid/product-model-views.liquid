@@ -170,6 +170,7 @@
         {% endif %}
       </div>
       <div class="model-main">
+        {% assign glb_url = ' https://modelviewer.dev/assets/ShopifyModels/GeoPlanter.glb' %}
         {% if section.settings.model != blank %}
           {% assign glb_url = section.settings.model %}
         {% endif %}
@@ -327,16 +328,6 @@
       "default": 8
     },
     {
-      "type": "range",
-      "id": "first_width",
-      "label": "第一个卡片宽度",
-      "min": 0,
-      "max": 100,
-      "step": 2,
-      "unit": "%",
-      "default": 54
-    },
-    {
       "type": "header",
       "content": "样式配置区",
       "info": "样式配置区"
@@ -357,7 +348,7 @@
       "type": "color_background",
       "id": "model_bg_color",
       "label": "模型背景颜色",
-      "default": "linear-gradient(0deg, rgba(202, 202, 202, 0.979), rgba(168, 168, 168, 0.61) 100%);"
+      "default": "linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 100%)"
     },
     {
       "type": "select",

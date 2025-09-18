@@ -1,5 +1,5 @@
-<style>
-
+{% style %}
+  
 /* 产品特色 */
 product-features {
   display: block;
@@ -17,14 +17,28 @@ product-features .swiper-slide {
   position: relative;
   height: auto;
   overflow: hidden;
-  border-radius: 1.5rem;
+  border-radius: 0.75rem;
 }
 product-features .swiper-slide .media_wrapper {
+  position: relative;
   --tw-bg-opacity: 1;
   background-color: rgba(244, 244, 244, 1);
   background-color: rgba(244, 244, 244, var(--tw-bg-opacity, 1));
 }
+product-features .swiper-slide .media_wrapper::after {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  --tw-content: '';
+  content: '';
+  content: var(--tw-content);
+        background: var(--mask);
+}
 product-features .swiper-slide .media_wrapper video {
+  display: block;
   height: auto;
   max-height: 660px;
   min-height: 560px;
@@ -54,6 +68,7 @@ product-features .swiper-slide .content_wrapper {
   position: absolute;
   top: 10%;
   left: 5%;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,6 +88,7 @@ product-features .swiper-slide .content_wrapper .min-title {
 product-features .swiper-slide .content_wrapper .title {
   font-size: 2.25rem;
   line-height: 2.5rem;
+  font-weight: 700;
   color: var(--title-color);
 }
 product-features .swiper-slide .content_wrapper .desc {
@@ -159,7 +175,7 @@ product-features .swiper-operate-wrapper .swiper-pagination .swiper-pagination-b
   width: 2.5rem;
   border-radius: 2px;
 }
-</style>
+{% endstyle %}
 
 <product-features
   style="
@@ -169,6 +185,12 @@ product-features .swiper-operate-wrapper .swiper-pagination .swiper-pagination-b
     --mob-padding-top: {{ section.settings.padding_top_M }}px;
     --mob-padding-bottom: {{ section.settings.padding_bottom_M }}px;
   "
+  {% if section.settings.box_id != blank %}
+    id="{{ section.settings.box_id }}"
+  {% endif %}
+  {% if section.settings.box_class != blank %}
+    class="{{ section.settings.box_class }}"
+  {% endif %}
 >
   <div class="{{ section.settings.containernew }}">
     <div class="swiper product-features__swiper">
@@ -184,7 +206,9 @@ product-features .swiper-operate-wrapper .swiper-pagination .swiper-pagination-b
               --btn-color:{{ block.settings.btn_color }};
               --btn-bg-hover: {{ block.settings.btn_bg_hover }};
               --btn-color-hover:{{ block.settings.btn_color_hover }};
+              --mask:{{ block.settings.mask }}
             "
+            {{ block.shopify_attributes }}
           >
             <div class="media_wrapper">
               {% if block.settings.pc_video != blank %}
@@ -502,6 +526,12 @@ product-features .swiper-operate-wrapper .swiper-pagination .swiper-pagination-b
           "id": "btn_bg_hover",
           "label": "按钮Hover背景颜色",
           "default": "#ff6e0d"
+        },
+         {
+          "type": "color_background",
+          "id": "mask",
+          "label": "内容遮罩",
+          "default": "linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 100%)"
         }
       ]
     }

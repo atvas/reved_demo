@@ -132,6 +132,8 @@
   {% if section.settings.box_class != blank %}
     class="{{ section.settings.box_class }}"
   {% endif %}
+  data-autoplay="{{ section.settings.autoplay }}"
+  data-delay="{{ section.settings.delay |  times: 1000 }}"
 >
   <div class="{{ section.settings.containernew }}">
     <div class="content-wrapper">
@@ -195,6 +197,8 @@
             spaceBetween: 32,
           });
 
+          const delay = this.getAttribute('data-delay');
+          const autoplay = this.getAttribute('data-autoplay') == 'true';
           const swiper = new Swiper(cooperationEl, {
             slidesPerView: 1,
             spaceBetween: 12,
@@ -205,6 +209,12 @@
             thumbs: {
               swiper: thumbsSwiper,
             },
+            autoplay: autoplay
+              ? {
+                  delay: delay || 5000,
+                  disableOnInteraction: false,
+                }
+              : false,
           });
         }
       }
@@ -298,6 +308,23 @@
     {
       "type": "header",
       "content": "卡片配置区"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "自动轮播",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "自动轮播时间",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "s",
+      "default": 5,
+      "visible_if": "{{ section.settings.autoplay == true }}"
     },
     {
       "type": "range",

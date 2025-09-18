@@ -82,7 +82,7 @@ home-banner {
     }
 
     img {
-      @apply w-full h-full object-cover;
+      @apply w-full h-full object-cover block;
     }
 
     &.max {
@@ -101,7 +101,7 @@ home-banner {
       @apply relative;
 
       .content-wrapper {
-        @apply absolute top-0 left-0 z-[1] size-full py-[64px] md:py-[100px] flex;
+        @apply absolute top-0 left-0 z-[1] w-full md:h-[calc(100%-200px)] h-[calc(100%-128px)] py-[64px] md:py-[100px] flex;
 
         .container {
           @apply flex mx-auto w-full flex-col gap-4 md:gap-5 max-w-[90%];
@@ -123,9 +123,9 @@ home-banner {
           }
 
           .banner-link-btn {
-            @apply mt-6 md:mt-10;
+            @apply mt-6 md:mt-10 w-fit;
             button {
-              @apply outline-none  hover:bg-[var(--btn-color)] duration-300 ease-in-out cursor-pointer hover:text-[var(--btn-bg)] text-xl min-w-[160px] px-3 py-3 md:px-4 md:py-3 bg-[var(--btn-bg)] text-[var(--btn-color)] rounded-lg;
+              @apply outline-none border-none hover:bg-[var(--btn-color)] duration-300 ease-in-out cursor-pointer hover:text-[var(--btn-bg)] text-xl min-w-[160px] px-3 py-3 md:px-4 md:py-3 bg-[var(--btn-bg)] text-[var(--btn-color)] rounded-lg;
             }
           }
 
@@ -207,17 +207,42 @@ home-product {
       }
 
       .swiper-slide {
-        @apply h-auto w-full max-w-[469px] border border-[#eeeeee] rounded-[10px] overflow-hidden;
+        @apply h-auto w-full max-w-[373px]  rounded-[10px] overflow-hidden flex flex-col;
+        border: 1px solid #eeeeee;
 
         .image {
-          @apply bg-[#fafafa] pt-[10px] flex flex-col justify-center;
+          @apply bg-[#fafafa] pt-[10px] flex flex-col justify-center relative;
 
-          img {
-            @apply mix-blend-multiply w-[80%]   mx-auto max-h-[240px] h-auto object-cover;
+          .image_wrapper{
+            @apply size-full relative;
+
+            &.include_scenario:hover{
+              .scenario{
+                @apply flex;
+              }
+            }
+
+            img{
+              @apply aspect-[1/1] mix-blend-multiply w-[80%] mx-auto h-auto;
+            }
+
+            .scenario{
+              @apply absolute top-0 left-0 bg-[#fafafa] z-[1] hidden  justify-center;
+            }
+
+            .variants_image{
+              .item{ 
+                @apply hidden justify-center;
+
+                &.active{
+                  @apply flex;
+                }
+              }
+            }
           }
 
           .variants-list {
-            @apply flex gap-2 justify-center py-4;
+            @apply flex gap-2 justify-center py-4 absolute left-0 bottom-0 w-full z-[2];
 
             .variants-item {
               @apply block size-[24px] bg-[var(--bg)] rounded-[50%] border border-[#eeeeee];
@@ -237,18 +262,29 @@ home-product {
           }
         }
 
+        .bottom_info{
+          @apply flex flex-col flex-1 justify-between
+        }
+
         .info-wrapper {
           @apply p-[1.2em] pb-0 flex flex-col justify-between gap-4;
 
           .info {
             @apply relative flex flex-col-reverse md:flex-col gap-1;
 
-            /* .evaluate{
-                            @apply md:absolute md:right-0 md:top-0
-                        } */
+            .evaluate{
+              @apply mt-1;
+                .rating{
+                  @apply flex gap-1;
+
+                  svg{
+                    @apply size-5 text-[--rating]
+                  }
+                }
+            }
 
             .title-wrapper {
-              @apply flex flex-col;
+              @apply flex flex-col p-0 m-0;
 
               .title {
                 @apply font-bold text-lg;
@@ -270,11 +306,18 @@ home-product {
         }
 
         .dividing {
-          @apply my-4 mx-[1.2em] h-[1px] bg-[#eeeeee] block;
+          @apply my-4 h-[1px] bg-[#eeeeee] block;
         }
 
         .operate-wrapper {
-          @apply p-[1.2em] pt-0;
+          @apply p-[1.2em] pt-0 hidden;
+          &.active{
+            @apply block;
+          }
+
+          shopify-payment-terms{
+            @apply text-xs text-[#333]
+          }
 
           .price-wrapper {
             @apply flex gap-2 items-end;
@@ -303,6 +346,22 @@ home-product {
           .staging-item {
             img {
               @apply w-full max-w-[36px];
+            }
+          }
+
+          .cart_wrapper{
+            @apply grid grid-cols-2 gap-3 mt-4;
+
+            .card-quick-add{
+              @apply w-full ;
+              .button.button--icon{
+                @apply max-w-full rounded-xl w-full
+              }
+            }
+
+            .PremiumShow_link{
+              @apply w-full h-auto flex justify-center items-center rounded-xl no-underline text-[#242833] hover:bg-[#242833] hover:text-white;
+              border: 1px solid #242833;
             }
           }
         }
@@ -344,9 +403,15 @@ product-features {
     @apply relative rounded-xl overflow-hidden h-auto;
 
     .media_wrapper {
-      @apply bg-[#f4f4f4];
+      @apply bg-[#f4f4f4] relative;
+
+      &::after{
+        @apply absolute top-0 left-0 size-full content-[''] z-[1];
+        background: var(--mask);
+      }
+
       video {
-        @apply w-full h-auto object-cover min-h-[560px] max-h-[660px];
+        @apply w-full h-auto object-cover min-h-[560px] max-h-[660px] block;
 
         &.mobile-video {
           @apply md:hidden;
@@ -363,13 +428,13 @@ product-features {
     }
 
     .content_wrapper {
-      @apply absolute top-[10%] md:top-[15%] left-[5%] flex flex-col gap-2;
+      @apply absolute top-[10%] md:top-[15%] left-[5%] flex flex-col gap-2 z-[2];
 
       .min-title {
         @apply text-sm text-[--min-title-color];
       }
       .title {
-        @apply text-4xl text-[--title-color];
+        @apply text-4xl text-[--title-color] font-bold;
       }
 
       .desc {
